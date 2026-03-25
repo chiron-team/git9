@@ -88,28 +88,40 @@
   .container {
     padding: 0 var(--space-4);
   }
-  
+
   .hero {
     padding: var(--space-16) 0;
   }
-  
+
   .hero__title {
     font-size: var(--font-size-3xl);
   }
-  
+
   .hero__subtitle {
     font-size: var(--font-size-lg);
   }
-  
+
   .about,
   .counter,
   .contact {
     padding: var(--space-16) 0;
   }
-  
+
   .about__grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
+  }
+
+  /* Counter: compact display on small screens */
+  .counter__display {
+    width: 9rem;
+    height: 9rem;
+    font-size: var(--font-size-5xl);
+  }
+
+  .counter__btn {
+    min-width: 7.5rem;
+    font-size: var(--font-size-base);
   }
 }
 

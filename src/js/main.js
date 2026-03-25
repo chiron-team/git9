@@ -58,6 +58,20 @@ function initCounter() {
 
     function updateDisplay() {
         display.textContent = count;
+
+        // Apply colour-state modifier classes
+        display.classList.remove('counter__display--positive', 'counter__display--negative');
+        if (count > 0) {
+            display.classList.add('counter__display--positive');
+        } else if (count < 0) {
+            display.classList.add('counter__display--negative');
+        }
+
+        // Trigger bump animation by cycling the class
+        display.classList.remove('counter__display--bump');
+        // Force a reflow so the animation re-triggers on every click
+        void display.offsetWidth;
+        display.classList.add('counter__display--bump');
     }
 
     addBtn.addEventListener('click', function () {

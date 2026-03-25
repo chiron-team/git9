@@ -165,25 +165,96 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   font-size: var(--font-size-6xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
   color: var(--color-primary);
-  background-color: var(--color-gray-50);
-  border: 2px solid var(--color-gray-200);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-inner);
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  background-color: var(--color-white);
+  border: 3px solid var(--color-primary-light);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-lg), var(--shadow-inner);
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+  user-select: none;
+}
+
+/* Colour states: updated by JS when the value changes */
+.counter__display--positive {
+  color: var(--color-success);
+  border-color: var(--color-success);
+  box-shadow:
+    0 0 0 4px rgb(16 185 129 / 15%),
+    var(--shadow-lg),
+    var(--shadow-inner);
+}
+
+.counter__display--negative {
+  color: var(--color-error);
+  border-color: var(--color-error);
+  box-shadow:
+    0 0 0 4px rgb(239 68 68 / 15%),
+    var(--shadow-lg),
+    var(--shadow-inner);
+}
+
+/* Brief scale pulse when the value updates */
+@keyframes counter-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.counter__display--bump {
+  animation: counter-bump var(--transition-base) ease-out;
 }
 
 .counter__controls {
   display: flex;
   gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .counter__btn {
   min-width: 9rem;
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.counter__btn:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.counter__btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Subtract button: uses a dedicated danger variant */
+.btn--danger {
+  color: var(--color-white);
+  background-color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.btn--danger:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
 }
 
 /* Responsive navigation */
@@ -191,11 +262,11 @@
   .nav__container {
     padding: var(--space-3) var(--space-4);
   }
-  
+
   .nav__menu {
     gap: var(--space-4);
   }
-  
+
   .nav__logo {
     font-size: var(--font-size-lg);
   }
