@@ -14,6 +14,9 @@ function init() {
     
     // Navigation highlighting
     initNavigationHighlight();
+
+    // Counter widget
+    initCounter();
     
     console.log('G-project-2 initialized successfully');
 }
@@ -178,6 +181,68 @@ function initNavigationHighlight() {
     
     window.addEventListener('scroll', highlightNavigation);
     highlightNavigation(); // Initial call
+}
+
+// Counter widget
+function initCounter() {
+    const valueEl = document.getElementById('counter-value');
+    const incrementBtn = document.getElementById('counter-increment');
+    const decrementBtn = document.getElementById('counter-decrement');
+    const resetBtn = document.getElementById('counter-reset');
+
+    if (!valueEl || !incrementBtn || !decrementBtn || !resetBtn) {
+        return;
+    }
+
+    let count = 0;
+
+    function updateDisplay() {
+        valueEl.textContent = count;
+
+        // Reflect sign in value colour
+        valueEl.classList.remove('counter__value--positive', 'counter__value--negative');
+        valueEl.parentElement.classList.remove(
+            'counter__display--positive',
+            'counter__display--negative'
+        );
+
+        if (count > 0) {
+            valueEl.classList.add('counter__value--positive');
+            valueEl.parentElement.classList.add('counter__display--positive');
+        } else if (count < 0) {
+            valueEl.classList.add('counter__value--negative');
+            valueEl.parentElement.classList.add('counter__display--negative');
+        }
+    }
+
+    function triggerBump() {
+        valueEl.classList.remove('counter__value--bump');
+        // Force reflow so the animation re-triggers on rapid clicks
+        void valueEl.offsetWidth;
+        valueEl.classList.add('counter__value--bump');
+        valueEl.addEventListener('transitionend', function removeBump() {
+            valueEl.classList.remove('counter__value--bump');
+            valueEl.removeEventListener('transitionend', removeBump);
+        });
+    }
+
+    incrementBtn.addEventListener('click', function () {
+        count += 1;
+        updateDisplay();
+        triggerBump();
+    });
+
+    decrementBtn.addEventListener('click', function () {
+        count -= 1;
+        updateDisplay();
+        triggerBump();
+    });
+
+    resetBtn.addEventListener('click', function () {
+        count = 0;
+        updateDisplay();
+        triggerBump();
+    });
 }
 
 // Utility functions

@@ -30,6 +30,9 @@
                         <a href="#about" class="nav__link">About</a>
                     </li>
                     <li class="nav__item">
+                        <a href="#counter" class="nav__link">Counter</a>
+                    </li>
+                    <li class="nav__item">
                         <a href="#contact" class="nav__link">Contact</a>
                     </li>
                 </ul>
@@ -61,6 +64,41 @@
                     <div class="card">
                         <h3 class="card__title">Best Practices</h3>
                         <p class="card__content">Follows modern web development best practices and accessibility guidelines.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="counter" class="counter-section">
+            <div class="container">
+                <h2 class="section__title">Interactive Counter</h2>
+                <div class="counter">
+                    <div class="counter__display">
+                        <span id="counter-value" class="counter__value">0</span>
+                        <span class="counter__label">Current Count</span>
+                    </div>
+                    <div class="counter__controls">
+                        <button
+                            id="counter-decrement"
+                            class="counter__btn counter__btn--decrement"
+                            aria-label="Decrement counter"
+                        >
+                            &#8722; Decrease
+                        </button>
+                        <button
+                            id="counter-reset"
+                            class="counter__btn counter__btn--reset"
+                            aria-label="Reset counter"
+                        >
+                            &#8635; Reset
+                        </button>
+                        <button
+                            id="counter-increment"
+                            class="counter__btn counter__btn--increment"
+                            aria-label="Increment counter"
+                        >
+                            &#43; Increase
+                        </button>
                     </div>
                 </div>
             </div>

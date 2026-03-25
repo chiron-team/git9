@@ -52,6 +52,18 @@
   margin-top: var(--space-12);
 }
 
+/* Counter section */
+.counter-section {
+  padding: var(--space-20) 0;
+  background-color: var(--color-gray-50);
+}
+
+@media (width <= 767px) {
+  .counter-section {
+    padding: var(--space-16) 0;
+  }
+}
+
 /* Contact section */
 .contact {
   padding: var(--space-20) 0;
