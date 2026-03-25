@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function init() {
     // Smooth scrolling for navigation links
     initSmoothScrolling();
-    
+
+    // Counter widget
+    initCounter();
+
     // Form handling
     initContactForm();
     
@@ -40,6 +43,31 @@ function initSmoothScrolling() {
                 });
             }
         });
+    });
+}
+
+// Counter widget
+function initCounter() {
+    const display = document.getElementById('counter-value');
+    const addBtn = document.getElementById('counter-add');
+    const subtractBtn = document.getElementById('counter-subtract');
+
+    if (!display || !addBtn || !subtractBtn) return;
+
+    let count = 0;
+
+    function updateDisplay() {
+        display.textContent = count;
+    }
+
+    addBtn.addEventListener('click', function () {
+        count += 1;
+        updateDisplay();
+    });
+
+    subtractBtn.addEventListener('click', function () {
+        count -= 1;
+        updateDisplay();
     });
 }
 

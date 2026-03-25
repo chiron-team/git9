@@ -52,6 +52,13 @@
   margin-top: var(--space-12);
 }
 
+/* Counter section */
+.counter {
+  padding: var(--space-20) 0;
+  background-color: var(--color-gray-100);
+  text-align: center;
+}
+
 /* Contact section */
 .contact {
   padding: var(--space-20) 0;
@@ -95,6 +102,7 @@
   }
   
   .about,
+  .counter,
   .contact {
     padding: var(--space-16) 0;
   }

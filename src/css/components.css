@@ -153,6 +153,39 @@
   color: var(--color-gray-900);
 }
 
+/* Counter */
+.counter__widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.counter__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 10rem;
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  background-color: var(--color-gray-50);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-inner);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.counter__controls {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.counter__btn {
+  min-width: 9rem;
+}
+
 /* Responsive navigation */
 @media (max-width: 767px) {
   .nav__container {
