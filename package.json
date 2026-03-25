@@ -1,0 +1,43 @@
+{
+  "name": "g-project-2",
+  "version": "1.0.0",
+  "description": "A modern HTML/CSS project with development tooling",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/",
+    "build": "npm run build:css",
+    "build:css": "postcss src/css/main.css -o dist/css/main.css --env production",
+    "watch:css": "postcss src/css/main.css -o dist/css/main.css --watch",
+    "lint:css": "stylelint \"src/css/**/*.css\"",
+    "lint:html": "htmlhint \"*.html\" \"src/**/*.html\"",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean && mkdir -p dist/css dist/js dist/assets"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "frontend",
+    "web"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "htmlhint": "^1.1.4",
+    "live-server": "^1.2.2",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
