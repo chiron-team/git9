@@ -13,6 +13,26 @@
   box-shadow: var(--shadow-sm);
 }
 
+.header__title-bar {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  padding: var(--space-4) var(--space-4);
+  text-align: center;
+}
+
+.header__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .header__title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
 /* Main content */
 .main {
   min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
