@@ -358,6 +358,8 @@
    Calculator
    ========================================================= */
 
+/* Outer card — gives the widget the same "lifted panel" treatment used by
+   .about__bio, .about__fun-facts, and .card throughout the page. */
 .calculator__widget {
   display: flex;
   flex-direction: column;
@@ -365,6 +367,13 @@
   gap: var(--space-8);
   max-width: 28rem;
   margin: 0 auto;
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8) var(--space-8) var(--space-10);
+
+  /* Top accent stripe — same primary-colour motif as cards and the about section */
+  border-top: 3px solid var(--color-primary-light);
 }
 
 /* Input row */
@@ -373,6 +382,36 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
   width: 100%;
+
+  /* Centre the operator glyph between the two columns via a CSS-only approach:
+     a pseudo-element on the container that visually bridges the gap. */
+  position: relative;
+}
+
+/* Decorative operator marker between the two input columns */
+.calculator__inputs::after {
+  content: "±";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-400);
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-full);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  line-height: 1;
+
+  /* Sit on top of the gap without affecting the grid children */
+  margin-top: calc(var(--font-size-sm) + var(--space-2));
 }
 
 .calculator__field {
@@ -389,6 +428,8 @@
   letter-spacing: 0.02em;
 }
 
+/* Inputs use the primary-light border and warm tint to match the counter
+   display and card accent language rather than the plain gray-200 default. */
 .calculator__input {
   width: 100%;
   padding: var(--space-3) var(--space-4);
@@ -397,13 +438,15 @@
   font-variant-numeric: tabular-nums;
   text-align: center;
   color: var(--color-gray-900);
-  background-color: var(--color-white);
-  border: 2px solid var(--color-gray-200);
+  background-color: rgb(249 115 22 / 4%);
+  border: 2px solid var(--color-primary-light);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition:
     border-color var(--transition-fast),
+    background-color var(--transition-fast),
     box-shadow var(--transition-fast);
+
   /* Remove browser-default spin buttons for a cleaner look */
   appearance: textfield;
 }
@@ -414,9 +457,15 @@
   margin: 0;
 }
 
+.calculator__input:hover {
+  border-color: var(--color-primary);
+  background-color: rgb(249 115 22 / 6%);
+}
+
 .calculator__input:focus {
   outline: none;
   border-color: var(--color-primary);
+  background-color: var(--color-white);
   box-shadow: 0 0 0 3px rgb(249 115 22 / 15%);
 }
 
@@ -452,13 +501,45 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Result display */
+/* Result area — labelled divider above the output */
 .calculator__result-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
   width: 100%;
+
+  /* Top hairline with centred "Result" label — separates controls from output */
+  position: relative;
+  padding-top: var(--space-8);
+}
+
+/* Hairline rule */
+.calculator__result-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-gray-200);
+}
+
+/* "Result" label centred over the hairline */
+.calculator__result-wrapper::after {
+  content: "Result";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-500);
+  background-color: var(--color-white);
+  padding: 0 var(--space-3);
+  white-space: nowrap;
 }
 
 .calculator__result {
@@ -514,20 +595,39 @@
   animation: calc-bump var(--transition-base) ease-out;
 }
 
+/* Expression label — hidden until JS populates it to avoid empty-space gap */
 .calculator__expression {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-500);
   font-variant-numeric: tabular-nums;
   margin: 0;
-  min-height: 1.25rem;
   letter-spacing: 0.02em;
+  min-height: 0;
+  transition: opacity var(--transition-fast);
 }
 
-/* Responsive: stack inputs on small screens */
+.calculator__expression:empty {
+  visibility: hidden;
+}
+
+/* -------------------------------------------------------
+   Calculator responsive overrides
+   ------------------------------------------------------- */
+
+/* Small phones: stack inputs, shrink result font & buttons */
 @media (width <= 479px) {
+  .calculator__widget {
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
   .calculator__inputs {
     grid-template-columns: 1fr;
+  }
+
+  /* Hide the operator marker when stacked — it would sit mid-column oddly */
+  .calculator__inputs::after {
+    display: none;
   }
 
   .calculator__result {
@@ -537,6 +637,14 @@
   .calculator__btn {
     min-width: 7.5rem;
     font-size: var(--font-size-base);
+  }
+}
+
+/* Medium viewports: widen the widget slightly to use available space */
+@media (480px <= width <= 767px) {
+  .calculator__widget {
+    max-width: 32rem;
+    padding: var(--space-8) var(--space-10) var(--space-10);
   }
 }
 

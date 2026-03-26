@@ -87,8 +87,12 @@
 /* Calculator section */
 .calculator {
   padding: var(--space-20) 0;
-  background-color: var(--color-white);
+  background-color: var(--color-gray-50);
   text-align: center;
+
+  /* Accent stripe mirrors the .about section, reinforcing the primary-colour
+     thread that runs through every interactive section of the page. */
+  border-top: 4px solid var(--color-primary-light);
 }
 
 /* Contact section */
