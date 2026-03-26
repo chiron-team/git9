@@ -17,6 +17,9 @@ function init() {
     
     // Navigation highlighting
     initNavigationHighlight();
+
+    // Theme toggle (placeholder — functionality to be added in a future task)
+    initThemeToggle();
     
     console.log('G-project-2 initialized successfully');
 }
@@ -220,6 +223,16 @@ function initNavigationHighlight() {
     
     window.addEventListener('scroll', highlightNavigation);
     highlightNavigation(); // Initial call
+}
+
+// Theme toggle (placeholder — no theme-switching logic yet)
+function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+
+    if (!themeToggleBtn) return;
+
+    // TODO: implement light/dark mode switching in a future task.
+    // The button is intentionally non-functional at this stage.
 }
 
 // Utility functions
