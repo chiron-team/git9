@@ -43,13 +43,18 @@
 .about {
   padding: var(--space-20) 0;
   background-color: var(--color-gray-50);
+
+  /* Subtle top accent that echoes the counter's primary-colour border motif */
+  border-top: 4px solid var(--color-primary-light);
 }
 
 .about__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-8);
-  margin-top: var(--space-12);
+
+  /* Grid sits directly below the title — spacing handled by the title margin */
+  margin-top: 0;
 }
 
 /* Counter section */
@@ -109,7 +114,7 @@
 
   .about__grid {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-5);
   }
 
   /* Counter: compact display on small screens */

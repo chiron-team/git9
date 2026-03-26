@@ -46,26 +46,68 @@
 /* Cards */
 .card {
   background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-base);
-  padding: var(--space-6);
-  transition: box-shadow var(--transition-base);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8) var(--space-6);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  /* Top accent stripe — cohesive with the counter display border */
+  border-top: 3px solid var(--color-primary-light);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-3px);
 }
 
 .card__title {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   margin-bottom: var(--space-3);
   color: var(--color-gray-900);
+  line-height: var(--line-height-snug);
 }
 
 .card__content {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
   color: var(--color-gray-600);
   margin-bottom: 0;
+}
+
+/* About-section card badge
+   A small numbered circle above the title that echoes the counter's circular
+   display and primary-colour palette. The badge number is supplied via a
+   CSS counter so no JS or HTML changes are needed. */
+.about__grid {
+  counter-reset: about-card;
+}
+
+.about__grid .card {
+  counter-increment: about-card;
+  position: relative;
+  padding-top: calc(var(--space-8) + var(--space-6));
+}
+
+.about__grid .card::before {
+  content: counter(about-card);
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-6);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  background-color: rgb(59 130 246 / 10%);
+  border: 1.5px solid var(--color-primary-light);
+  border-radius: var(--radius-full);
+  line-height: 1;
 }
 
 /* Forms */
@@ -148,9 +190,28 @@
 
 /* Section titles */
 .section__title {
+  position: relative;
   text-align: center;
   margin-bottom: var(--space-12);
   color: var(--color-gray-900);
+  padding-bottom: var(--space-6);
+}
+
+/* Decorative accent underline — mirrors the counter's primary-colour language */
+.section__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.5rem;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
+  border-radius: var(--radius-full);
 }
 
 /* Counter */
