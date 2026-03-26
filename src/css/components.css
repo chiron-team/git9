@@ -43,6 +43,42 @@
   background-color: var(--color-gray-50);
 }
 
+/* Theme toggle button */
+.btn--theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.btn--theme-toggle:hover {
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-400);
+  color: var(--color-gray-900);
+}
+
+.btn--theme-toggle:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn--theme-toggle__icon {
+  font-size: var(--font-size-base);
+  line-height: 1;
+}
+
 /* Cards */
 .card {
   background-color: var(--color-white);
@@ -322,6 +358,8 @@
 @media (max-width: 767px) {
   .nav__container {
     padding: var(--space-3) var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-2);
   }
 
   .nav__menu {
@@ -330,5 +368,9 @@
 
   .nav__logo {
     font-size: var(--font-size-lg);
+  }
+
+  .btn--theme-toggle__label {
+    display: none;
   }
 }
