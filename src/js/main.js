@@ -12,6 +12,9 @@ function init() {
     // Counter widget
     initCounter();
 
+    // Calculator widget
+    initCalculator();
+
     // Form handling
     initContactForm();
     
@@ -85,6 +88,57 @@ function initCounter() {
     subtractBtn.addEventListener('click', function () {
         count -= 1;
         updateDisplay();
+    });
+}
+
+// Calculator widget
+function initCalculator() {
+    const inputA = document.getElementById('calc-a');
+    const inputB = document.getElementById('calc-b');
+    const addBtn = document.getElementById('calc-add');
+    const subtractBtn = document.getElementById('calc-subtract');
+    const result = document.getElementById('calc-result');
+    const expression = document.getElementById('calc-expression');
+
+    if (!inputA || !inputB || !addBtn || !subtractBtn || !result || !expression) return;
+
+    function getValues() {
+        const a = parseFloat(inputA.value) || 0;
+        const b = parseFloat(inputB.value) || 0;
+        return { a, b };
+    }
+
+    function formatNumber(n) {
+        // Use locale string for readability; fall back to plain string
+        return Number.isFinite(n) ? n.toLocaleString(undefined, { maximumFractionDigits: 10 }) : String(n);
+    }
+
+    function showResult(value, expressionText) {
+        result.textContent = formatNumber(value);
+        expression.textContent = expressionText;
+
+        // Apply colour-state modifier classes
+        result.classList.remove('calculator__result--positive', 'calculator__result--negative');
+        if (value > 0) {
+            result.classList.add('calculator__result--positive');
+        } else if (value < 0) {
+            result.classList.add('calculator__result--negative');
+        }
+
+        // Trigger bump animation by cycling the class
+        result.classList.remove('calculator__result--bump');
+        void result.offsetWidth; // force reflow so animation re-triggers
+        result.classList.add('calculator__result--bump');
+    }
+
+    addBtn.addEventListener('click', function () {
+        const { a, b } = getValues();
+        showResult(a + b, `${a} + ${b} =`);
+    });
+
+    subtractBtn.addEventListener('click', function () {
+        const { a, b } = getValues();
+        showResult(a - b, `${a} − ${b} =`);
     });
 }
 

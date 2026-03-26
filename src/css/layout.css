@@ -84,6 +84,13 @@
   text-align: center;
 }
 
+/* Calculator section */
+.calculator {
+  padding: var(--space-20) 0;
+  background-color: var(--color-white);
+  text-align: center;
+}
+
 /* Contact section */
 .contact {
   padding: var(--space-20) 0;
@@ -128,6 +135,7 @@
 
   .about,
   .counter,
+  .calculator,
   .contact {
     padding: var(--space-16) 0;
   }
