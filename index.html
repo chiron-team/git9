@@ -259,6 +259,7 @@
                                 class="calculator__input"
                                 value="0"
                                 aria-label="First number"
+                                aria-describedby="calc-error"
                             >
                         </div>
                         <div class="calculator__field">
@@ -269,9 +270,17 @@
                                 class="calculator__input"
                                 value="0"
                                 aria-label="Second number"
+                                aria-describedby="calc-error"
                             >
                         </div>
                     </div>
+                    <p
+                        id="calc-error"
+                        class="calculator__error"
+                        role="alert"
+                        aria-live="assertive"
+                        aria-atomic="true"
+                    ></p>
                     <div class="calculator__controls">
                         <button
                             type="button"
