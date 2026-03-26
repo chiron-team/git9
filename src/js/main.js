@@ -93,26 +93,99 @@ function initCounter() {
 
 // Calculator widget
 function initCalculator() {
-    const inputA = document.getElementById('calc-a');
-    const inputB = document.getElementById('calc-b');
-    const addBtn = document.getElementById('calc-add');
+    const inputA    = document.getElementById('calc-a');
+    const inputB    = document.getElementById('calc-b');
+    const addBtn    = document.getElementById('calc-add');
     const subtractBtn = document.getElementById('calc-subtract');
-    const result = document.getElementById('calc-result');
+    const result    = document.getElementById('calc-result');
     const expression = document.getElementById('calc-expression');
+    const errorMsg  = document.getElementById('calc-error');
 
-    if (!inputA || !inputB || !addBtn || !subtractBtn || !result || !expression) return;
+    if (!inputA || !inputB || !addBtn || !subtractBtn || !result || !expression || !errorMsg) return;
 
-    function getValues() {
-        const a = parseFloat(inputA.value) || 0;
-        const b = parseFloat(inputB.value) || 0;
-        return { a, b };
+    // --- Helpers -----------------------------------------------------------
+
+    /**
+     * Returns true when a string represents a finite number.
+     * Rejects empty strings, whitespace-only strings, and non-numeric text.
+     * @param {string} value
+     * @returns {boolean}
+     */
+    function isValidNumber(value) {
+        return value.trim() !== '' && Number.isFinite(Number(value));
     }
 
+    /**
+     * Validates both inputs. Highlights invalid fields and surfaces a human-
+     * readable error message. Returns the parsed pair on success, or null.
+     * @returns {{ a: number, b: number } | null}
+     */
+    function validateInputs() {
+        const rawA = inputA.value;
+        const rawB = inputB.value;
+
+        const validA = isValidNumber(rawA);
+        const validB = isValidNumber(rawB);
+
+        // Reset previous error state
+        clearError();
+
+        if (!validA || !validB) {
+            const invalidFields = [];
+            if (!validA) {
+                inputA.classList.add('calculator__input--error');
+                inputA.setAttribute('aria-invalid', 'true');
+                invalidFields.push('First number');
+            }
+            if (!validB) {
+                inputB.classList.add('calculator__input--error');
+                inputB.setAttribute('aria-invalid', 'true');
+                invalidFields.push('Second number');
+            }
+
+            const fieldList = invalidFields.join(' and ');
+            showError(`${fieldList} must be a valid number.`);
+            return null;
+        }
+
+        return { a: Number(rawA), b: Number(rawB) };
+    }
+
+    /** Removes all error indicators from both inputs and the error banner. */
+    function clearError() {
+        [inputA, inputB].forEach(function (input) {
+            input.classList.remove('calculator__input--error');
+            input.removeAttribute('aria-invalid');
+        });
+        errorMsg.textContent = '';
+    }
+
+    /**
+     * Displays an error message in the accessible error banner.
+     * @param {string} message
+     */
+    function showError(message) {
+        errorMsg.textContent = message;
+    }
+
+    /**
+     * Formats a finite number for display using locale-aware notation.
+     * @param {number} n
+     * @returns {string}
+     */
     function formatNumber(n) {
-        // Use locale string for readability; fall back to plain string
-        return Number.isFinite(n) ? n.toLocaleString(undefined, { maximumFractionDigits: 10 }) : String(n);
+        return Number.isFinite(n)
+            ? n.toLocaleString(undefined, { maximumFractionDigits: 10 })
+            : String(n);
     }
 
+    /**
+     * Updates the result display with a value and its expression label,
+     * applies the appropriate colour-state class, and triggers the bump
+     * animation so the user gets clear visual feedback on every operation.
+     * @param {number} value
+     * @param {string} expressionText
+     */
     function showResult(value, expressionText) {
         result.textContent = formatNumber(value);
         expression.textContent = expressionText;
@@ -131,14 +204,52 @@ function initCalculator() {
         result.classList.add('calculator__result--bump');
     }
 
-    addBtn.addEventListener('click', function () {
-        const { a, b } = getValues();
-        showResult(a + b, `${a} + ${b} =`);
-    });
+    // --- Public operations -------------------------------------------------
 
-    subtractBtn.addEventListener('click', function () {
-        const { a, b } = getValues();
-        showResult(a - b, `${a} − ${b} =`);
+    /**
+     * Adds the two input values and displays the result.
+     * Shows an error and aborts if either input is non-numeric.
+     */
+    function add() {
+        const values = validateInputs();
+        if (values === null) return;
+
+        const { a, b } = values;
+        showResult(a + b, `${formatNumber(a)} + ${formatNumber(b)} =`);
+    }
+
+    /**
+     * Subtracts the second input value from the first and displays the result.
+     * Shows an error and aborts if either input is non-numeric.
+     */
+    function subtract() {
+        const values = validateInputs();
+        if (values === null) return;
+
+        const { a, b } = values;
+        showResult(a - b, `${formatNumber(a)} − ${formatNumber(b)} =`);
+    }
+
+    // --- Event listeners ---------------------------------------------------
+
+    addBtn.addEventListener('click', add);
+    subtractBtn.addEventListener('click', subtract);
+
+    // Clear the error state as soon as the user begins correcting a field,
+    // so the UI feels responsive and non-intrusive.
+    [inputA, inputB].forEach(function (input) {
+        input.addEventListener('input', function () {
+            if (input.classList.contains('calculator__input--error')) {
+                input.classList.remove('calculator__input--error');
+                input.removeAttribute('aria-invalid');
+
+                // If both fields are now valid, also clear the banner message.
+                if (!inputA.classList.contains('calculator__input--error') &&
+                    !inputB.classList.contains('calculator__input--error')) {
+                    errorMsg.textContent = '';
+                }
+            }
+        });
     });
 }
 
