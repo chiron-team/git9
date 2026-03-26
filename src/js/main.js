@@ -54,8 +54,14 @@ function initCounter() {
 
     if (!display || !addBtn || !subtractBtn) return;
 
+    // Initial counter value starts at zero per acceptance criteria
     let count = 0;
 
+    /**
+     * Sync the visible display with the current count value and apply
+     * the appropriate colour-state modifier class (positive / negative /
+     * neutral) together with a brief scale-bump animation on every update.
+     */
     function updateDisplay() {
         display.textContent = count;
 
@@ -74,11 +80,13 @@ function initCounter() {
         display.classList.add('counter__display--bump');
     }
 
+    // Increase counter by 1 on each "Add" click
     addBtn.addEventListener('click', function () {
         count += 1;
         updateDisplay();
     });
 
+    // Decrease counter by 1 on each "Subtract" click
     subtractBtn.addEventListener('click', function () {
         count -= 1;
         updateDisplay();
