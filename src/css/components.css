@@ -354,6 +354,333 @@
   border-color: #dc2626;
 }
 
+/* =========================================================
+   About Me — Bio intro
+   ========================================================= */
+
+.about__bio {
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+  margin-bottom: var(--space-12);
+  border-top: 3px solid var(--color-primary-light);
+}
+
+.about__bio-avatar {
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  font-size: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(249 115 22 / 10%);
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-full);
+  line-height: 1;
+}
+
+.about__bio-name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-1);
+  line-height: var(--line-height-snug);
+}
+
+.about__bio-tagline {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-4);
+}
+
+.about__bio-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-gray-600);
+  margin-bottom: var(--space-3);
+}
+
+.about__bio-text:last-child {
+  margin-bottom: 0;
+}
+
+.about__bio-text code {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  color: var(--color-primary-dark);
+  background-color: rgb(249 115 22 / 8%);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-base);
+}
+
+/* =========================================================
+   About Me — Timeline
+   ========================================================= */
+
+.about__timeline {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.about__timeline-heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.about__timeline-list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Vertical spine */
+.about__timeline-list::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 7rem;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
+  border-radius: var(--radius-full);
+}
+
+.about__timeline-item {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.about__timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.about__timeline-date {
+  flex-shrink: 0;
+  width: 6.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: right;
+  padding-top: 0.2rem;
+}
+
+/* Node on the spine */
+.about__timeline-item::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+  position: relative;
+  z-index: 1;
+  margin-top: 0.25rem;
+}
+
+.about__timeline-content {
+  flex: 1;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-gray-600);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--color-primary-light);
+}
+
+.about__timeline-content strong {
+  display: block;
+  color: var(--color-gray-900);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-1);
+}
+
+.about__timeline-content code {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  color: var(--color-primary-dark);
+  background-color: rgb(249 115 22 / 8%);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-base);
+}
+
+/* =========================================================
+   About Me — Fun Facts
+   ========================================================= */
+
+.about__fun-facts {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+  margin-bottom: var(--space-12);
+  border-top: 3px solid var(--color-primary-light);
+}
+
+.about__fun-facts-heading {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.about__fun-facts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.about__fun-facts-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-gray-600);
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: 0;
+}
+
+.about__fun-facts-icon {
+  flex-shrink: 0;
+  font-size: var(--font-size-xl);
+  line-height: 1.3;
+}
+
+/* =========================================================
+   About Me — Pull quote
+   ========================================================= */
+
+.about__quote {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-12);
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Decorative oversized quotation mark */
+.about__quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -1rem;
+  left: var(--space-6);
+  font-size: 9rem;
+  line-height: 1;
+  color: rgb(255 255 255 / 12%);
+  font-family: var(--font-family-serif);
+  pointer-events: none;
+  user-select: none;
+}
+
+.about__quote-text {
+  font-size: var(--font-size-xl);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+}
+
+.about__quote-attribution {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: rgb(255 255 255 / 80%);
+  letter-spacing: 0.03em;
+}
+
+.about__quote-attribution cite {
+  font-style: italic;
+}
+
+/* =========================================================
+   About Me — Responsive overrides
+   ========================================================= */
+
+@media (width <= 767px) {
+  .about__bio {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-6);
+  }
+
+  .about__bio-tagline {
+    margin-bottom: var(--space-3);
+  }
+
+  .about__timeline-list::before {
+    left: 5.25rem;
+  }
+
+  .about__timeline-date {
+    width: 4.75rem;
+    font-size: 0.65rem;
+  }
+
+  .about__timeline-content {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .about__fun-facts-list {
+    grid-template-columns: 1fr;
+  }
+
+  .about__quote {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .about__quote-text {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (768px <= width <= 1023px) {
+  .about__fun-facts-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   Responsive navigation
+   ========================================================= */
+
 /* Responsive navigation */
 @media (max-width: 767px) {
   .nav__container {

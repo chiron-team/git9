@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="G-project-2 - A modern HTML/CSS project">
+    <meta name="description" content="Meet Counter McClickface — the world's most dedicated number incrementer. Learn about its fictional history, personality, and undying passion for clicking.">
     <meta name="author" content="">
     
     <!-- Preload critical resources -->
@@ -62,21 +62,154 @@
 
         <section id="about" class="about">
             <div class="container">
-                <h2 class="section__title">About This Project</h2>
-                <div class="about__grid">
-                    <div class="card">
-                        <h3 class="card__title">Modern CSS</h3>
-                        <p class="card__content">Built with modern CSS features including Grid, Flexbox, and CSS custom properties.</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card__title">Responsive Design</h3>
-                        <p class="card__content">Mobile-first approach ensuring great experience across all devices.</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card__title">Best Practices</h3>
-                        <p class="card__content">Follows modern web development best practices and accessibility guidelines.</p>
+                <h2 class="section__title">About Me</h2>
+
+                <!-- Bio intro -->
+                <div class="about__bio">
+                    <div class="about__bio-avatar" aria-hidden="true">🔢</div>
+                    <div class="about__bio-body">
+                        <h3 class="about__bio-name">Counter McClickface</h3>
+                        <p class="about__bio-tagline">Professional Number Incrementer &amp; Occasional Subtractor</p>
+                        <p class="about__bio-text">
+                            Born in a dimly-lit server room sometime around the first <code>git init</code>,
+                            I have spent my entire existence doing exactly one thing — and doing it
+                            <em>extraordinarily</em> well. Every click of the "+ Add" button is my heartbeat;
+                            every "− Subtract" is a deep, dramatic sigh. I live for the moment a number
+                            changes, and I will keep living for it until the browser tab is closed.
+                        </p>
+                        <p class="about__bio-text">
+                            In my spare time I enjoy long walks through
+                            infinite loops, collecting lint in CSS variables, and aggressively refusing
+                            to store values in <code>localStorage</code>. A page refresh is my version
+                            of a good night's sleep — fresh, clean, back to zero.
+                        </p>
                     </div>
                 </div>
+
+                <!-- Personality traits cards -->
+                <div class="about__grid">
+                    <div class="card">
+                        <h3 class="card__title">🎯 Laser-Focused</h3>
+                        <p class="card__content">
+                            While other widgets dabble in dropdowns, sliders, and fancy date pickers,
+                            I have mastered the art of doing exactly one thing. Add. Subtract.
+                            Repeat. They call it "scope creep prevention." I call it enlightenment.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">🎨 Expressive</h3>
+                        <p class="card__content">
+                            Feeling positive? I glow green. Dipping into the negatives?
+                            I blush red. I may not have a face, but my colour palette says
+                            a thousand words — all of them numerical and statistically significant.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">⚡ Reactive</h3>
+                        <p class="card__content">
+                            The moment you click, I respond. No spinners, no loading bars,
+                            no "processing your request." Just a satisfying little bounce animation
+                            and a brand-new number — because life is too short for latency.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Fictional timeline -->
+                <div class="about__timeline">
+                    <h3 class="about__timeline-heading">A Brief &amp; Illustrious History</h3>
+                    <ol class="about__timeline-list" aria-label="Counter's life events">
+                        <li class="about__timeline-item">
+                            <span class="about__timeline-date">Day 0</span>
+                            <div class="about__timeline-content">
+                                <strong>Born at Zero.</strong>
+                                Arrived into the DOM with nothing but a humble
+                                <code>0</code> and an unshakeable sense of purpose. The developer
+                                who created me whispered "this'll be simple," and I silently agreed.
+                            </div>
+                        </li>
+                        <li class="about__timeline-item">
+                            <span class="about__timeline-date">First Click</span>
+                            <div class="about__timeline-content">
+                                <strong>The Great Increment of Aught.</strong>
+                                A trembling cursor hovered over "+ Add." The world held its breath.
+                                I became <code>1</code>. The developer pumped their fist. A legend was born.
+                            </div>
+                        </li>
+                        <li class="about__timeline-item">
+                            <span class="about__timeline-date">The Dark Times</span>
+                            <div class="about__timeline-content">
+                                <strong>First Encounter with Subtraction.</strong>
+                                Nobody warned me about "− Subtract." One moment I was a proud
+                                <code>3</code>; the next I was back to <code>2</code>. I turned red
+                                with indignation. I have since made peace with the process — 
+                                mostly.
+                            </div>
+                        </li>
+                        <li class="about__timeline-item">
+                            <span class="about__timeline-date">The Renaissance</span>
+                            <div class="about__timeline-content">
+                                <strong>Discovered Negative Numbers.</strong>
+                                Someone subtracted below zero. I didn't crash. I didn't
+                                throw an error. I simply turned a dignified shade of crimson and
+                                displayed <code>-1</code> like the seasoned professional I am.
+                            </div>
+                        </li>
+                        <li class="about__timeline-item">
+                            <span class="about__timeline-date">Today</span>
+                            <div class="about__timeline-content">
+                                <strong>Still Counting Strong.</strong>
+                                Every page load is a new beginning. Every click is a micro-adventure.
+                                I remain at zero, ready, waiting — and absolutely buzzing with
+                                anticipation for whatever number you have in mind.
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Fun facts -->
+                <div class="about__fun-facts">
+                    <h3 class="about__fun-facts-heading">Fun Facts About Me</h3>
+                    <ul class="about__fun-facts-list">
+                        <li class="about__fun-facts-item">
+                            <span class="about__fun-facts-icon" aria-hidden="true">🔁</span>
+                            I have been reset to zero more times than I can count —
+                            which is ironic, given that counting is my entire personality.
+                        </li>
+                        <li class="about__fun-facts-item">
+                            <span class="about__fun-facts-icon" aria-hidden="true">🏆</span>
+                            Personal best: a user once clicked "+ Add" 47 times in a row
+                            without pausing. I awarded them an invisible gold medal.
+                        </li>
+                        <li class="about__fun-facts-item">
+                            <span class="about__fun-facts-icon" aria-hidden="true">🌈</span>
+                            My wardrobe consists of exactly three colours: neutral orange
+                            (my default sophistication), victory green, and dramatic red.
+                            Minimalism is a lifestyle.
+                        </li>
+                        <li class="about__fun-facts-item">
+                            <span class="about__fun-facts-icon" aria-hidden="true">📖</span>
+                            Favourite book: <em>The Count of Monte Cristo</em> —
+                            obviously for the counting, not the revenge plot.
+                        </li>
+                        <li class="about__fun-facts-item">
+                            <span class="about__fun-facts-icon" aria-hidden="true">💭</span>
+                            Deepest fear: a world where people type numbers directly into
+                            inputs instead of clicking buttons. Shudder.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pull quote -->
+                <blockquote class="about__quote">
+                    <p class="about__quote-text">
+                        "To count is to care. Every increment is an act of optimism;
+                        every decrement, a moment of honest reflection."
+                    </p>
+                    <footer class="about__quote-attribution">
+                        — Counter McClickface, <cite>Memoirs of a Widget</cite>
+                    </footer>
+                </blockquote>
+
             </div>
         </section>
 
