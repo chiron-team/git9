@@ -146,6 +146,27 @@
   color: var(--color-primary);
 }
 
+/* About Me */
+.about-me__body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8);
+  background-color: var(--color-gray-50);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-base);
+}
+
+.about-me__body p {
+  color: var(--color-gray-700);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.about-me__body p:last-child {
+  margin-bottom: 0;
+}
+
 /* Section titles */
 .section__title {
   text-align: center;

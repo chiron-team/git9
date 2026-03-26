@@ -59,6 +59,12 @@
   text-align: center;
 }
 
+/* About Me section */
+.about-me {
+  padding: var(--space-20) 0;
+  background-color: var(--color-white);
+}
+
 /* Contact section */
 .contact {
   padding: var(--space-20) 0;
@@ -102,6 +108,7 @@
   }
 
   .about,
+  .about-me,
   .counter,
   .contact {
     padding: var(--space-16) 0;
