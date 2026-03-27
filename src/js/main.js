@@ -256,37 +256,37 @@ function initCalculator() {
 // Contact form handling
 function initContactForm() {
     const form = document.querySelector('.contact__form');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-            
-            // Basic validation
-            if (validateForm(data)) {
-                // Simulate form submission
-                handleFormSubmission(data);
-            }
-        });
-    }
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        // Basic validation
+        if (validateForm(data)) {
+            // Simulate form submission
+            handleFormSubmission(data);
+        }
+    });
 }
 
 function validateForm(data) {
     const { name, email, message } = data;
-    
+
     if (!name || !email || !message) {
-        showMessage('Please fill in all fields.', 'error');
+        showMessage('Please fill in all required fields.', 'error');
         return false;
     }
-    
+
     if (!isValidEmail(email)) {
         showMessage('Please enter a valid email address.', 'error');
         return false;
     }
-    
+
     return true;
 }
 
@@ -297,8 +297,8 @@ function isValidEmail(email) {
 
 function handleFormSubmission(data) {
     // Show loading state
-    showMessage('Sending message...', 'info');
-    
+    showMessage('Sending message…', 'info');
+
     // Simulate API call
     setTimeout(() => {
         showMessage('Thank you! Your message has been sent successfully.', 'success');
@@ -306,49 +306,36 @@ function handleFormSubmission(data) {
     }, 1000);
 }
 
+/**
+ * Renders a status message inside the form's dedicated live region
+ * (#contact-form-status) using CSS classes instead of inline styles.
+ * The live region's role="status" and aria-live="polite" ensure screen
+ * readers announce the update automatically.
+ *
+ * @param {string} message  Human-readable message text.
+ * @param {'success'|'error'|'info'|'warning'} type  Visual variant.
+ */
 function showMessage(message, type = 'info') {
-    // Remove existing message
-    const existingMessage = document.querySelector('.form-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-    
-    // Create new message element
+    const statusRegion = document.getElementById('contact-form-status');
+
+    if (!statusRegion) return;
+
+    // Clear any previous message
+    statusRegion.textContent = '';
+
+    // Build the new message element using project CSS classes (no inline styles)
     const messageElement = document.createElement('div');
     messageElement.className = `form-message form-message--${type}`;
     messageElement.textContent = message;
-    
-    // Add styles
-    messageElement.style.cssText = `
-        padding: 12px 16px;
-        margin-bottom: 16px;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 500;
-        ${getMessageStyles(type)}
-    `;
-    
-    // Insert message
-    const form = document.querySelector('.contact__form');
-    form.insertBefore(messageElement, form.firstChild);
-    
-    // Remove message after 5 seconds
+
+    statusRegion.appendChild(messageElement);
+
+    // Auto-dismiss after 5 seconds
     setTimeout(() => {
-        if (messageElement.parentNode) {
-            messageElement.remove();
+        if (messageElement.parentNode === statusRegion) {
+            statusRegion.textContent = '';
         }
     }, 5000);
-}
-
-function getMessageStyles(type) {
-    const styles = {
-        success: 'background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0;',
-        error: 'background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5;',
-        info: 'background-color: #dbeafe; color: #1e40af; border: 1px solid #93c5fd;',
-        warning: 'background-color: #fef3c7; color: #92400e; border: 1px solid #fcd34d;'
-    };
-    
-    return styles[type] || styles.info;
 }
 
 // Navigation highlighting based on scroll position

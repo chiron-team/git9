@@ -148,7 +148,7 @@
 
 /* Forms */
 .form__group {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 .form__label {
@@ -157,6 +157,29 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-700);
   margin-bottom: var(--space-2);
+}
+
+/* Required-field asterisk — decorative, hidden from screen readers */
+.form__required {
+  color: var(--color-error);
+  margin-left: var(--space-1);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Hint text below each field */
+.form__hint {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  line-height: var(--line-height-normal);
+}
+
+/* Note explaining the required-field marker */
+.form__required-note {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+  margin-bottom: var(--space-5);
 }
 
 .form__input,
@@ -170,7 +193,19 @@
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-300);
   border-radius: var(--radius-md);
-  transition: border-color var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: var(--color-gray-400);
+}
+
+.form__input:hover,
+.form__textarea:hover {
+  border-color: var(--color-gray-400);
 }
 
 .form__input:focus,
@@ -180,9 +215,82 @@
   box-shadow: 0 0 0 3px rgb(249 115 22 / 10%);
 }
 
+/* Error state — applied by JS on invalid submission */
+.form__input--error,
+.form__textarea--error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 10%);
+}
+
+.form__input--error:focus,
+.form__textarea--error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 15%);
+}
+
 .form__textarea {
   resize: vertical;
   min-height: 120px;
+  font-family: inherit;
+}
+
+/* Contact-form submit button — full width on mobile, auto-width on wider screens */
+.contact__submit {
+  width: 100%;
+}
+
+@media (width >= 480px) {
+  .contact__submit {
+    width: auto;
+  }
+}
+
+/* =========================================================
+   Form status message
+   Injected into #contact-form-status by initContactForm().
+   Variants: --success, --error, --info
+   ========================================================= */
+
+/* The wrapper div is empty by default; hide it to avoid phantom whitespace */
+.contact__form-status:empty {
+  display: none;
+}
+
+.form-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  border: 1px solid transparent;
+}
+
+.form-message--success {
+  color: #065f46;
+  background-color: #d1fae5;
+  border-color: #a7f3d0;
+}
+
+.form-message--error {
+  color: #991b1b;
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.form-message--info {
+  color: #1e40af;
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.form-message--warning {
+  color: #92400e;
+  background-color: #fef3c7;
+  border-color: #fcd34d;
 }
 
 /* Navigation */
