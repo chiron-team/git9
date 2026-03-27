@@ -14,7 +14,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   margin-bottom: var(--space-4);
@@ -64,7 +69,8 @@ a:focus {
 }
 
 /* Lists */
-ul, ol {
+ul,
+ol {
   margin-bottom: var(--space-4);
 }
 
@@ -94,11 +100,11 @@ img {
   h1 {
     font-size: var(--font-size-5xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-4xl);
   }
-  
+
   h3 {
     font-size: var(--font-size-3xl);
   }

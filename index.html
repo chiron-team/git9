@@ -1,341 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Meet Counter McClickface — the world's most dedicated number incrementer. Learn about its fictional history, personality, and undying passion for clicking.">
-    <meta name="author" content="">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet Counter McClickface — the world's most dedicated number incrementer. Learn about its fictional history, personality, and undying passion for clicking."
+    />
+    <meta name="author" content="" />
+
     <!-- Preload critical resources -->
-    <link rel="preload" href="src/css/main.css" as="style">
-    
+    <link rel="preload" href="src/css/main.css" as="style" />
+
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="src/css/main.css">
-    
+    <link rel="stylesheet" href="src/css/main.css" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
     <title>G-project-2</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <div class="header__title-bar">
-            <h1 class="header__title">Tiny Calculator</h1>
+      <div class="header__title-bar">
+        <h1 class="header__title">Tiny Calculator</h1>
+      </div>
+      <nav class="nav">
+        <div class="nav__container">
+          <a href="#" class="nav__logo">G-project-2</a>
+          <ul class="nav__menu">
+            <li class="nav__item">
+              <a href="#home" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">About</a>
+            </li>
+            <li class="nav__item">
+              <a href="#counter" class="nav__link">Counter</a>
+            </li>
+            <li class="nav__item">
+              <a href="#calculator" class="nav__link">Calculator</a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">Contact</a>
+            </li>
+          </ul>
+          <button
+            type="button"
+            id="theme-toggle"
+            class="btn btn--theme-toggle"
+            aria-label="Toggle light/dark theme"
+          >
+            <span class="btn--theme-toggle__icon" aria-hidden="true">☀️</span>
+            <span class="btn--theme-toggle__label">Light Mode</span>
+          </button>
         </div>
-        <nav class="nav">
-            <div class="nav__container">
-                <a href="#" class="nav__logo">G-project-2</a>
-                <ul class="nav__menu">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link">Home</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#about" class="nav__link">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#counter" class="nav__link">Counter</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#calculator" class="nav__link">Calculator</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">Contact</a>
-                    </li>
-                </ul>
-                <button
-                    type="button"
-                    id="theme-toggle"
-                    class="btn btn--theme-toggle"
-                    aria-label="Toggle light/dark theme"
-                >
-                    <span class="btn--theme-toggle__icon" aria-hidden="true">☀️</span>
-                    <span class="btn--theme-toggle__label">Light Mode</span>
-                </button>
-            </div>
-        </nav>
+      </nav>
     </header>
 
     <main class="main">
-        <section id="home" class="hero">
-            <div class="container">
-                <h1 class="hero__title">Welcome to G-project-2</h1>
-                <p class="hero__subtitle">A modern HTML/CSS project built with best practices</p>
-                <a href="#about" class="btn btn--primary">Get Started</a>
+      <section id="home" class="hero">
+        <div class="container">
+          <h1 class="hero__title">Welcome to G-project-2</h1>
+          <p class="hero__subtitle">A modern HTML/CSS project built with best practices</p>
+          <a href="#about" class="btn btn--primary">Get Started</a>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section__title">About Me</h2>
+
+          <!-- Bio intro -->
+          <div class="about__bio">
+            <div class="about__bio-avatar" aria-hidden="true">🔢</div>
+            <div class="about__bio-body">
+              <h3 class="about__bio-name">Counter McClickface</h3>
+              <p class="about__bio-tagline">
+                Professional Number Incrementer &amp; Occasional Subtractor
+              </p>
+              <p class="about__bio-text">
+                Born in a dimly-lit server room sometime around the first <code>git init</code>, I
+                have spent my entire existence doing exactly one thing — and doing it
+                <em>extraordinarily</em> well. Every click of the "+ Add" button is my heartbeat;
+                every "− Subtract" is a deep, dramatic sigh. I live for the moment a number changes,
+                and I will keep living for it until the browser tab is closed.
+              </p>
+              <p class="about__bio-text">
+                In my spare time I enjoy long walks through infinite loops, collecting lint in CSS
+                variables, and aggressively refusing to store values in <code>localStorage</code>. A
+                page refresh is my version of a good night's sleep — fresh, clean, back to zero.
+              </p>
             </div>
-        </section>
+          </div>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section__title">About Me</h2>
-
-                <!-- Bio intro -->
-                <div class="about__bio">
-                    <div class="about__bio-avatar" aria-hidden="true">🔢</div>
-                    <div class="about__bio-body">
-                        <h3 class="about__bio-name">Counter McClickface</h3>
-                        <p class="about__bio-tagline">Professional Number Incrementer &amp; Occasional Subtractor</p>
-                        <p class="about__bio-text">
-                            Born in a dimly-lit server room sometime around the first <code>git init</code>,
-                            I have spent my entire existence doing exactly one thing — and doing it
-                            <em>extraordinarily</em> well. Every click of the "+ Add" button is my heartbeat;
-                            every "− Subtract" is a deep, dramatic sigh. I live for the moment a number
-                            changes, and I will keep living for it until the browser tab is closed.
-                        </p>
-                        <p class="about__bio-text">
-                            In my spare time I enjoy long walks through
-                            infinite loops, collecting lint in CSS variables, and aggressively refusing
-                            to store values in <code>localStorage</code>. A page refresh is my version
-                            of a good night's sleep — fresh, clean, back to zero.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Personality traits cards -->
-                <div class="about__grid">
-                    <div class="card">
-                        <h3 class="card__title">🎯 Laser-Focused</h3>
-                        <p class="card__content">
-                            While other widgets dabble in dropdowns, sliders, and fancy date pickers,
-                            I have mastered the art of doing exactly one thing. Add. Subtract.
-                            Repeat. They call it "scope creep prevention." I call it enlightenment.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card__title">🎨 Expressive</h3>
-                        <p class="card__content">
-                            Feeling positive? I glow green. Dipping into the negatives?
-                            I blush red. I may not have a face, but my colour palette says
-                            a thousand words — all of them numerical and statistically significant.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <h3 class="card__title">⚡ Reactive</h3>
-                        <p class="card__content">
-                            The moment you click, I respond. No spinners, no loading bars,
-                            no "processing your request." Just a satisfying little bounce animation
-                            and a brand-new number — because life is too short for latency.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Fictional timeline -->
-                <div class="about__timeline">
-                    <h3 class="about__timeline-heading">A Brief &amp; Illustrious History</h3>
-                    <ol class="about__timeline-list" aria-label="Counter's life events">
-                        <li class="about__timeline-item">
-                            <span class="about__timeline-date">Day 0</span>
-                            <div class="about__timeline-content">
-                                <strong>Born at Zero.</strong>
-                                Arrived into the DOM with nothing but a humble
-                                <code>0</code> and an unshakeable sense of purpose. The developer
-                                who created me whispered "this'll be simple," and I silently agreed.
-                            </div>
-                        </li>
-                        <li class="about__timeline-item">
-                            <span class="about__timeline-date">First Click</span>
-                            <div class="about__timeline-content">
-                                <strong>The Great Increment of Aught.</strong>
-                                A trembling cursor hovered over "+ Add." The world held its breath.
-                                I became <code>1</code>. The developer pumped their fist. A legend was born.
-                            </div>
-                        </li>
-                        <li class="about__timeline-item">
-                            <span class="about__timeline-date">The Dark Times</span>
-                            <div class="about__timeline-content">
-                                <strong>First Encounter with Subtraction.</strong>
-                                Nobody warned me about "− Subtract." One moment I was a proud
-                                <code>3</code>; the next I was back to <code>2</code>. I turned red
-                                with indignation. I have since made peace with the process — 
-                                mostly.
-                            </div>
-                        </li>
-                        <li class="about__timeline-item">
-                            <span class="about__timeline-date">The Renaissance</span>
-                            <div class="about__timeline-content">
-                                <strong>Discovered Negative Numbers.</strong>
-                                Someone subtracted below zero. I didn't crash. I didn't
-                                throw an error. I simply turned a dignified shade of crimson and
-                                displayed <code>-1</code> like the seasoned professional I am.
-                            </div>
-                        </li>
-                        <li class="about__timeline-item">
-                            <span class="about__timeline-date">Today</span>
-                            <div class="about__timeline-content">
-                                <strong>Still Counting Strong.</strong>
-                                Every page load is a new beginning. Every click is a micro-adventure.
-                                I remain at zero, ready, waiting — and absolutely buzzing with
-                                anticipation for whatever number you have in mind.
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-
-                <!-- Fun facts -->
-                <div class="about__fun-facts">
-                    <h3 class="about__fun-facts-heading">Fun Facts About Me</h3>
-                    <ul class="about__fun-facts-list">
-                        <li class="about__fun-facts-item">
-                            <span class="about__fun-facts-icon" aria-hidden="true">🔁</span>
-                            I have been reset to zero more times than I can count —
-                            which is ironic, given that counting is my entire personality.
-                        </li>
-                        <li class="about__fun-facts-item">
-                            <span class="about__fun-facts-icon" aria-hidden="true">🏆</span>
-                            Personal best: a user once clicked "+ Add" 47 times in a row
-                            without pausing. I awarded them an invisible gold medal.
-                        </li>
-                        <li class="about__fun-facts-item">
-                            <span class="about__fun-facts-icon" aria-hidden="true">🌈</span>
-                            My wardrobe consists of exactly three colours: neutral orange
-                            (my default sophistication), victory green, and dramatic red.
-                            Minimalism is a lifestyle.
-                        </li>
-                        <li class="about__fun-facts-item">
-                            <span class="about__fun-facts-icon" aria-hidden="true">📖</span>
-                            Favourite book: <em>The Count of Monte Cristo</em> —
-                            obviously for the counting, not the revenge plot.
-                        </li>
-                        <li class="about__fun-facts-item">
-                            <span class="about__fun-facts-icon" aria-hidden="true">💭</span>
-                            Deepest fear: a world where people type numbers directly into
-                            inputs instead of clicking buttons. Shudder.
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Pull quote -->
-                <blockquote class="about__quote">
-                    <p class="about__quote-text">
-                        "To count is to care. Every increment is an act of optimism;
-                        every decrement, a moment of honest reflection."
-                    </p>
-                    <footer class="about__quote-attribution">
-                        — Counter McClickface, <cite>Memoirs of a Widget</cite>
-                    </footer>
-                </blockquote>
-
+          <!-- Personality traits cards -->
+          <div class="about__grid">
+            <div class="card">
+              <h3 class="card__title">🎯 Laser-Focused</h3>
+              <p class="card__content">
+                While other widgets dabble in dropdowns, sliders, and fancy date pickers, I have
+                mastered the art of doing exactly one thing. Add. Subtract. Repeat. They call it
+                "scope creep prevention." I call it enlightenment.
+              </p>
             </div>
-        </section>
+            <div class="card">
+              <h3 class="card__title">🎨 Expressive</h3>
+              <p class="card__content">
+                Feeling positive? I glow green. Dipping into the negatives? I blush red. I may not
+                have a face, but my colour palette says a thousand words — all of them numerical and
+                statistically significant.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="card__title">⚡ Reactive</h3>
+              <p class="card__content">
+                The moment you click, I respond. No spinners, no loading bars, no "processing your
+                request." Just a satisfying little bounce animation and a brand-new number — because
+                life is too short for latency.
+              </p>
+            </div>
+          </div>
 
-        <section id="counter" class="counter">
-            <div class="container">
-                <h2 class="section__title">Counter</h2>
-                <div class="counter__widget" role="region" aria-label="Interactive counter">
-                    <output
-                        id="counter-value"
-                        class="counter__display"
-                        aria-live="polite"
-                        aria-atomic="true"
-                        aria-label="Counter value"
-                    >0</output>
-                    <div class="counter__controls">
-                        <button
-                            type="button"
-                            id="counter-subtract"
-                            class="btn btn--danger counter__btn"
-                            aria-label="Subtract one from counter"
-                        >− Subtract</button>
-                        <button
-                            type="button"
-                            id="counter-add"
-                            class="btn btn--primary counter__btn"
-                            aria-label="Add one to counter"
-                        >+ Add</button>
-                    </div>
+          <!-- Fictional timeline -->
+          <div class="about__timeline">
+            <h3 class="about__timeline-heading">A Brief &amp; Illustrious History</h3>
+            <ol class="about__timeline-list" aria-label="Counter's life events">
+              <li class="about__timeline-item">
+                <span class="about__timeline-date">Day 0</span>
+                <div class="about__timeline-content">
+                  <strong>Born at Zero.</strong>
+                  Arrived into the DOM with nothing but a humble
+                  <code>0</code> and an unshakeable sense of purpose. The developer who created me
+                  whispered "this'll be simple," and I silently agreed.
                 </div>
-            </div>
-        </section>
-
-        <section id="calculator" class="calculator">
-            <div class="container">
-                <h2 class="section__title">Calculator</h2>
-                <div class="calculator__widget" role="region" aria-label="Interactive calculator">
-                    <div class="calculator__inputs">
-                        <div class="calculator__field">
-                            <label for="calc-a" class="calculator__label">First number</label>
-                            <input
-                                type="number"
-                                id="calc-a"
-                                class="calculator__input"
-                                value="0"
-                                aria-label="First number"
-                                aria-describedby="calc-error"
-                            >
-                        </div>
-                        <div class="calculator__field">
-                            <label for="calc-b" class="calculator__label">Second number</label>
-                            <input
-                                type="number"
-                                id="calc-b"
-                                class="calculator__input"
-                                value="0"
-                                aria-label="Second number"
-                                aria-describedby="calc-error"
-                            >
-                        </div>
-                    </div>
-                    <p
-                        id="calc-error"
-                        class="calculator__error"
-                        role="alert"
-                        aria-live="assertive"
-                        aria-atomic="true"
-                    ></p>
-                    <div class="calculator__controls">
-                        <button
-                            type="button"
-                            id="calc-add"
-                            class="btn btn--primary calculator__btn"
-                            aria-label="Add the two numbers"
-                        >+ Add</button>
-                        <button
-                            type="button"
-                            id="calc-subtract"
-                            class="btn btn--danger calculator__btn"
-                            aria-label="Subtract the second number from the first"
-                        >− Subtract</button>
-                    </div>
-                    <div class="calculator__result-wrapper" aria-live="polite" aria-atomic="true">
-                        <output
-                            id="calc-result"
-                            class="calculator__result"
-                            aria-label="Calculator result"
-                        >—</output>
-                        <p id="calc-expression" class="calculator__expression" aria-hidden="true"></p>
-                    </div>
+              </li>
+              <li class="about__timeline-item">
+                <span class="about__timeline-date">First Click</span>
+                <div class="about__timeline-content">
+                  <strong>The Great Increment of Aught.</strong>
+                  A trembling cursor hovered over "+ Add." The world held its breath. I became
+                  <code>1</code>. The developer pumped their fist. A legend was born.
                 </div>
-            </div>
-        </section>
+              </li>
+              <li class="about__timeline-item">
+                <span class="about__timeline-date">The Dark Times</span>
+                <div class="about__timeline-content">
+                  <strong>First Encounter with Subtraction.</strong>
+                  Nobody warned me about "− Subtract." One moment I was a proud
+                  <code>3</code>; the next I was back to <code>2</code>. I turned red with
+                  indignation. I have since made peace with the process — mostly.
+                </div>
+              </li>
+              <li class="about__timeline-item">
+                <span class="about__timeline-date">The Renaissance</span>
+                <div class="about__timeline-content">
+                  <strong>Discovered Negative Numbers.</strong>
+                  Someone subtracted below zero. I didn't crash. I didn't throw an error. I simply
+                  turned a dignified shade of crimson and displayed <code>-1</code> like the
+                  seasoned professional I am.
+                </div>
+              </li>
+              <li class="about__timeline-item">
+                <span class="about__timeline-date">Today</span>
+                <div class="about__timeline-content">
+                  <strong>Still Counting Strong.</strong>
+                  Every page load is a new beginning. Every click is a micro-adventure. I remain at
+                  zero, ready, waiting — and absolutely buzzing with anticipation for whatever
+                  number you have in mind.
+                </div>
+              </li>
+            </ol>
+          </div>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section__title">Get In Touch</h2>
-                <form class="contact__form">
-                    <div class="form__group">
-                        <label for="name" class="form__label">Name</label>
-                        <input type="text" id="name" name="name" class="form__input" required>
-                    </div>
-                    <div class="form__group">
-                        <label for="email" class="form__label">Email</label>
-                        <input type="email" id="email" name="email" class="form__input" required>
-                    </div>
-                    <div class="form__group">
-                        <label for="message" class="form__label">Message</label>
-                        <textarea id="message" name="message" rows="5" class="form__textarea" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn--primary">Send Message</button>
-                </form>
+          <!-- Fun facts -->
+          <div class="about__fun-facts">
+            <h3 class="about__fun-facts-heading">Fun Facts About Me</h3>
+            <ul class="about__fun-facts-list">
+              <li class="about__fun-facts-item">
+                <span class="about__fun-facts-icon" aria-hidden="true">🔁</span>
+                I have been reset to zero more times than I can count — which is ironic, given that
+                counting is my entire personality.
+              </li>
+              <li class="about__fun-facts-item">
+                <span class="about__fun-facts-icon" aria-hidden="true">🏆</span>
+                Personal best: a user once clicked "+ Add" 47 times in a row without pausing. I
+                awarded them an invisible gold medal.
+              </li>
+              <li class="about__fun-facts-item">
+                <span class="about__fun-facts-icon" aria-hidden="true">🌈</span>
+                My wardrobe consists of exactly three colours: neutral orange (my default
+                sophistication), victory green, and dramatic red. Minimalism is a lifestyle.
+              </li>
+              <li class="about__fun-facts-item">
+                <span class="about__fun-facts-icon" aria-hidden="true">📖</span>
+                Favourite book: <em>The Count of Monte Cristo</em> — obviously for the counting, not
+                the revenge plot.
+              </li>
+              <li class="about__fun-facts-item">
+                <span class="about__fun-facts-icon" aria-hidden="true">💭</span>
+                Deepest fear: a world where people type numbers directly into inputs instead of
+                clicking buttons. Shudder.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pull quote -->
+          <blockquote class="about__quote">
+            <p class="about__quote-text">
+              "To count is to care. Every increment is an act of optimism; every decrement, a moment
+              of honest reflection."
+            </p>
+            <footer class="about__quote-attribution">
+              — Counter McClickface, <cite>Memoirs of a Widget</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="counter" class="counter">
+        <div class="container">
+          <h2 class="section__title">Counter</h2>
+          <div class="counter__widget" role="region" aria-label="Interactive counter">
+            <output
+              id="counter-value"
+              class="counter__display"
+              aria-live="polite"
+              aria-atomic="true"
+              aria-label="Counter value"
+              >0</output
+            >
+            <div class="counter__controls">
+              <button
+                type="button"
+                id="counter-subtract"
+                class="btn btn--danger counter__btn"
+                aria-label="Subtract one from counter"
+              >
+                − Subtract
+              </button>
+              <button
+                type="button"
+                id="counter-add"
+                class="btn btn--primary counter__btn"
+                aria-label="Add one to counter"
+              >
+                + Add
+              </button>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="calculator" class="calculator">
+        <div class="container">
+          <h2 class="section__title">Calculator</h2>
+          <div class="calculator__widget" role="region" aria-label="Interactive calculator">
+            <div class="calculator__inputs">
+              <div class="calculator__field">
+                <label for="calc-a" class="calculator__label">First number</label>
+                <input
+                  type="number"
+                  id="calc-a"
+                  class="calculator__input"
+                  value="0"
+                  aria-label="First number"
+                  aria-describedby="calc-error"
+                />
+              </div>
+              <div class="calculator__field">
+                <label for="calc-b" class="calculator__label">Second number</label>
+                <input
+                  type="number"
+                  id="calc-b"
+                  class="calculator__input"
+                  value="0"
+                  aria-label="Second number"
+                  aria-describedby="calc-error"
+                />
+              </div>
+            </div>
+            <p
+              id="calc-error"
+              class="calculator__error"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            ></p>
+            <div class="calculator__controls">
+              <button
+                type="button"
+                id="calc-add"
+                class="btn btn--primary calculator__btn"
+                aria-label="Add the two numbers"
+              >
+                + Add
+              </button>
+              <button
+                type="button"
+                id="calc-subtract"
+                class="btn btn--danger calculator__btn"
+                aria-label="Subtract the second number from the first"
+              >
+                − Subtract
+              </button>
+            </div>
+            <div class="calculator__result-wrapper" aria-live="polite" aria-atomic="true">
+              <output id="calc-result" class="calculator__result" aria-label="Calculator result"
+                >—</output
+              >
+              <p id="calc-expression" class="calculator__expression" aria-hidden="true"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2 class="section__title">Get In Touch</h2>
+          <form class="contact__form">
+            <div class="form__group">
+              <label for="name" class="form__label">Name</label>
+              <input type="text" id="name" name="name" class="form__input" required />
+            </div>
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <input type="email" id="email" name="email" class="form__input" required />
+            </div>
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                class="form__textarea"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Send Message</button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p class="footer__text">&copy; 2024 G-project-2. All rights reserved.</p>
-        </div>
+      <div class="container">
+        <p class="footer__text">&copy; 2024 G-project-2. All rights reserved.</p>
+      </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="src/js/main.js"></script>
-</body>
+  </body>
 </html>

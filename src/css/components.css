@@ -235,18 +235,14 @@
 
 /* Decorative accent underline — mirrors the counter's primary-colour language */
 .section__title::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 3.5rem;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--color-primary-light),
-    var(--color-primary)
-  );
+  background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
   border-radius: var(--radius-full);
 }
 
@@ -302,9 +298,15 @@
 
 /* Brief scale pulse when the value updates */
 @keyframes counter-bump {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.08); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .counter__display--bump {
@@ -390,7 +392,7 @@
 
 /* Decorative operator marker between the two input columns */
 .calculator__inputs::after {
-  content: "±";
+  content: '±';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -545,7 +547,7 @@
 
 /* Hairline rule */
 .calculator__result-wrapper::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -556,7 +558,7 @@
 
 /* "Result" label centred over the hairline */
 .calculator__result-wrapper::after {
-  content: "Result";
+  content: 'Result';
   position: absolute;
   top: 0;
   left: 50%;
@@ -615,9 +617,15 @@
 
 /* Brief scale pulse when the result updates */
 @keyframes calc-bump {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.04); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .calculator__result--bump {
@@ -770,17 +778,13 @@
 
 /* Vertical spine */
 .about__timeline-list::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0.75rem;
   bottom: 0.75rem;
   left: 7rem;
   width: 2px;
-  background: linear-gradient(
-    180deg,
-    var(--color-primary-light),
-    var(--color-primary)
-  );
+  background: linear-gradient(180deg, var(--color-primary-light), var(--color-primary));
   border-radius: var(--radius-full);
 }
 
@@ -810,7 +814,7 @@
 
 /* Node on the spine */
 .about__timeline-item::after {
-  content: "";
+  content: '';
   flex-shrink: 0;
   width: 0.75rem;
   height: 0.75rem;
@@ -906,11 +910,7 @@
 
 .about__quote {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
-  );
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   border-radius: var(--radius-xl);
   padding: var(--space-10) var(--space-12);
   text-align: center;
@@ -920,7 +920,7 @@
 
 /* Decorative oversized quotation mark */
 .about__quote::before {
-  content: "\201C";
+  content: '\201C';
   position: absolute;
   top: -1rem;
   left: var(--space-6);
