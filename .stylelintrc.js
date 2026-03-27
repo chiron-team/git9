@@ -4,8 +4,8 @@ module.exports = {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen']
-      }
+        ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
+      },
     ],
     'declaration-block-trailing-semicolon': null,
     'no-descending-specificity': null,
@@ -14,6 +14,6 @@ module.exports = {
     'comment-empty-line-before': null,
     'custom-property-pattern': null,
     'selector-class-pattern': null,
-    'value-keyword-case': null
-  }
+    'value-keyword-case': null,
+  },
 };

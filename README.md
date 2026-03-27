@@ -58,16 +58,19 @@ A modern HTML/CSS project built with best practices, featuring a responsive desi
 ### Installation
 
 1. Clone the repository and navigate to the project directory:
+
    ```bash
    cd g-project-2
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Build the CSS:
+
    ```bash
    npm run build:css
    ```
@@ -81,16 +84,16 @@ The project will open in your default browser at `http://localhost:3000`.
 
 ## Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server with live reload |
-| `npm run build` | Build for production |
-| `npm run build:css` | Build CSS for production |
-| `npm run watch:css` | Watch CSS files for changes |
-| `npm run lint:css` | Lint CSS files |
-| `npm run lint:html` | Lint HTML files |
-| `npm run format` | Format all files with Prettier |
-| `npm run clean` | Clean build directory |
+| Script              | Description                               |
+| ------------------- | ----------------------------------------- |
+| `npm run dev`       | Start development server with live reload |
+| `npm run build`     | Build for production                      |
+| `npm run build:css` | Build CSS for production                  |
+| `npm run watch:css` | Watch CSS files for changes               |
+| `npm run lint:css`  | Lint CSS files                            |
+| `npm run lint:html` | Lint HTML files                           |
+| `npm run format`    | Format all files with Prettier            |
+| `npm run clean`     | Clean build directory                     |
 
 ## CSS Architecture
 
