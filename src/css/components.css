@@ -34,7 +34,7 @@
 }
 
 .btn--secondary {
-  color: var(--color-gray-700);
+  color: var(--color-gray-600);
   background-color: var(--color-white);
   border-color: var(--color-gray-300);
 }
