@@ -146,17 +146,38 @@
   line-height: 1;
 }
 
-/* Forms */
+/* =========================================================
+   Contact — Form panel
+   The inner form card mirrors the "lifted panel" treatment
+   used by .calculator__widget, .about__bio, and .about__fun-facts
+   so the contact section feels cohesive with the rest of the page.
+   ========================================================= */
+
+.contact__form {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-10) var(--space-10) var(--space-12);
+
+  /* Same primary-colour top accent used on every other interactive panel */
+  border-top: 3px solid var(--color-primary-light);
+}
+
+/* =========================================================
+   Forms
+   ========================================================= */
+
 .form__group {
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 .form__label {
   display: block;
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-gray-700);
   margin-bottom: var(--space-2);
+  letter-spacing: 0.01em;
 }
 
 /* Required-field asterisk — decorative, hidden from screen readers */
@@ -169,32 +190,48 @@
 /* Hint text below each field */
 .form__hint {
   display: block;
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
   font-size: var(--font-size-xs);
   color: var(--color-gray-500);
   line-height: var(--line-height-normal);
+}
+
+/* Per-field inline validation error — shown by JS on invalid submission */
+.form__error {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-error);
+  line-height: var(--line-height-normal);
+}
+
+.form__error:empty {
+  display: none;
 }
 
 /* Note explaining the required-field marker */
 .form__required-note {
   font-size: var(--font-size-xs);
   color: var(--color-gray-500);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 .form__input,
 .form__textarea {
   display: block;
   width: 100%;
-  padding: var(--space-3);
+  padding: var(--space-3) var(--space-4);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   color: var(--color-gray-900);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
-  border-radius: var(--radius-md);
+  background-color: var(--color-gray-50);
+  border: 1.5px solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   transition:
     border-color var(--transition-fast),
+    background-color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
 
@@ -206,19 +243,22 @@
 .form__input:hover,
 .form__textarea:hover {
   border-color: var(--color-gray-400);
+  background-color: var(--color-white);
 }
 
 .form__input:focus,
 .form__textarea:focus {
   outline: none;
+  background-color: var(--color-white);
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgb(249 115 22 / 10%);
+  box-shadow: 0 0 0 3px rgb(249 115 22 / 12%);
 }
 
 /* Error state — applied by JS on invalid submission */
 .form__input--error,
 .form__textarea--error {
   border-color: var(--color-error);
+  background-color: rgb(239 68 68 / 3%);
   box-shadow: 0 0 0 3px rgb(239 68 68 / 10%);
 }
 
@@ -230,13 +270,39 @@
 
 .form__textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 140px;
   font-family: inherit;
 }
 
-/* Contact-form submit button — full width on mobile, auto-width on wider screens */
+/* =========================================================
+   Contact — Submit button
+   Full width on small screens; auto width once there is room.
+   Inherits the same hover-lift used by .counter__btn and
+   .calculator__btn for cross-section consistency.
+   ========================================================= */
+
 .contact__submit {
   width: 100%;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.contact__submit:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.contact__submit:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 @media (width >= 480px) {
@@ -248,7 +314,7 @@
 /* =========================================================
    Form status message
    Injected into #contact-form-status by initContactForm().
-   Variants: --success, --error, --info
+   Variants: --success, --error, --info, --warning
    ========================================================= */
 
 /* The wrapper div is empty by default; hide it to avoid phantom whitespace */
@@ -261,7 +327,7 @@
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-4);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -291,6 +357,25 @@
   color: #92400e;
   background-color: #fef3c7;
   border-color: #fcd34d;
+}
+
+/* =========================================================
+   Contact — Responsive overrides
+   ========================================================= */
+
+/* Small phones: tighten horizontal padding so the card doesn't feel cramped */
+@media (width <= 479px) {
+  .contact__form {
+    padding: var(--space-6) var(--space-5) var(--space-8);
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* Medium viewports: comfortable horizontal breathing room */
+@media (480px <= width <= 767px) {
+  .contact__form {
+    padding: var(--space-8) var(--space-8) var(--space-10);
+  }
 }
 
 /* Navigation */
