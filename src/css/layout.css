@@ -9,7 +9,7 @@
 
 /* Header */
 .header {
-  background-color: var(--color-white);
+  background-color: var(--color-gray-50);
   box-shadow: var(--shadow-sm);
 }
 
@@ -22,7 +22,7 @@
 .header__title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: var(--color-gray-800);
   letter-spacing: 0.02em;
   margin: 0;
 }
