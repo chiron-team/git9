@@ -22,7 +22,7 @@
 .header__title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-gray-800);
+  color: var(--color-white);
   letter-spacing: 0.02em;
   margin: 0;
 }
