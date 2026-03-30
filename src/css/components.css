@@ -140,7 +140,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
-  background-color: rgb(249 115 22 / 10%);
+  background-color: rgb(30 64 175 / 10%);
   border: 1.5px solid var(--color-primary-light);
   border-radius: var(--radius-full);
   line-height: 1;
@@ -251,7 +251,7 @@
   outline: none;
   background-color: var(--color-white);
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgb(249 115 22 / 12%);
+  box-shadow: 0 0 0 3px rgb(30 64 175 / 12%);
 }
 
 /* Error state — applied by JS on invalid submission */
@@ -621,7 +621,7 @@
   letter-spacing: 0.02em;
 }
 
-/* Inputs use the primary-light border and warm tint to match the counter
+/* Inputs use the primary-light border and cool-blue tint to match the counter
    display and card accent language rather than the plain gray-200 default. */
 .calculator__input {
   width: 100%;
@@ -631,7 +631,7 @@
   font-variant-numeric: tabular-nums;
   text-align: center;
   color: var(--color-gray-900);
-  background-color: rgb(249 115 22 / 4%);
+  background-color: rgb(30 64 175 / 4%);
   border: 2px solid var(--color-primary-light);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -652,14 +652,14 @@
 
 .calculator__input:hover {
   border-color: var(--color-primary);
-  background-color: rgb(249 115 22 / 6%);
+  background-color: rgb(30 64 175 / 6%);
 }
 
 .calculator__input:focus {
   outline: none;
   border-color: var(--color-primary);
   background-color: var(--color-white);
-  box-shadow: 0 0 0 3px rgb(249 115 22 / 15%);
+  box-shadow: 0 0 0 3px rgb(30 64 175 / 15%);
 }
 
 /* Input error state — applied by JS when a field contains a non-numeric value */
@@ -894,7 +894,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(249 115 22 / 10%);
+  background-color: rgb(30 64 175 / 10%);
   border: 2px solid var(--color-primary-light);
   border-radius: var(--radius-full);
   line-height: 1;
@@ -932,7 +932,7 @@
   font-family: var(--font-family-mono);
   font-size: 0.875em;
   color: var(--color-primary-dark);
-  background-color: rgb(249 115 22 / 8%);
+  background-color: rgb(30 64 175 / 8%);
   padding: 0.1em 0.35em;
   border-radius: var(--radius-base);
 }
@@ -1039,7 +1039,7 @@
   font-family: var(--font-family-mono);
   font-size: 0.875em;
   color: var(--color-primary-dark);
-  background-color: rgb(249 115 22 / 8%);
+  background-color: rgb(30 64 175 / 8%);
   padding: 0.1em 0.35em;
   border-radius: var(--radius-base);
 }
