@@ -93,164 +93,214 @@ function initCounter() {
 
 // Calculator widget
 function initCalculator() {
-    const inputA    = document.getElementById('calc-a');
-    const inputB    = document.getElementById('calc-b');
-    const addBtn    = document.getElementById('calc-add');
-    const subtractBtn = document.getElementById('calc-subtract');
-    const result    = document.getElementById('calc-result');
+    const display    = document.getElementById('calc-display');
     const expression = document.getElementById('calc-expression');
-    const errorMsg  = document.getElementById('calc-error');
+    const keypad     = document.querySelector('.calculator__keypad');
 
-    if (!inputA || !inputB || !addBtn || !subtractBtn || !result || !expression || !errorMsg) return;
+    if (!display || !expression || !keypad) return;
+
+    // --- Internal state ----------------------------------------------------
+
+    /** The number currently shown on the display (as a string). */
+    let currentInput = '0';
+
+    /** The first operand stored before an operator is pressed. */
+    let previousInput = '';
+
+    /** The pending operator symbol (+, −, ×, ÷) or null. */
+    let pendingOperator = null;
+
+    /**
+     * True once an operation has been evaluated via '='.
+     * The next digit press should start a fresh number rather than appending.
+     */
+    let justEvaluated = false;
 
     // --- Helpers -----------------------------------------------------------
 
     /**
-     * Returns true when a string represents a finite number.
-     * Rejects empty strings, whitespace-only strings, and non-numeric text.
-     * @param {string} value
-     * @returns {boolean}
-     */
-    function isValidNumber(value) {
-        return value.trim() !== '' && Number.isFinite(Number(value));
-    }
-
-    /**
-     * Validates both inputs. Highlights invalid fields and surfaces a human-
-     * readable error message. Returns the parsed pair on success, or null.
-     * @returns {{ a: number, b: number } | null}
-     */
-    function validateInputs() {
-        const rawA = inputA.value;
-        const rawB = inputB.value;
-
-        const validA = isValidNumber(rawA);
-        const validB = isValidNumber(rawB);
-
-        // Reset previous error state
-        clearError();
-
-        if (!validA || !validB) {
-            const invalidFields = [];
-            if (!validA) {
-                inputA.classList.add('calculator__input--error');
-                inputA.setAttribute('aria-invalid', 'true');
-                invalidFields.push('First number');
-            }
-            if (!validB) {
-                inputB.classList.add('calculator__input--error');
-                inputB.setAttribute('aria-invalid', 'true');
-                invalidFields.push('Second number');
-            }
-
-            const fieldList = invalidFields.join(' and ');
-            showError(`${fieldList} must be a valid number.`);
-            return null;
-        }
-
-        return { a: Number(rawA), b: Number(rawB) };
-    }
-
-    /** Removes all error indicators from both inputs and the error banner. */
-    function clearError() {
-        [inputA, inputB].forEach(function (input) {
-            input.classList.remove('calculator__input--error');
-            input.removeAttribute('aria-invalid');
-        });
-        errorMsg.textContent = '';
-    }
-
-    /**
-     * Displays an error message in the accessible error banner.
-     * @param {string} message
-     */
-    function showError(message) {
-        errorMsg.textContent = message;
-    }
-
-    /**
-     * Formats a finite number for display using locale-aware notation.
+     * Formats a finite number for display, keeping up to 10 decimal places
+     * and trimming trailing zeros.
      * @param {number} n
      * @returns {string}
      */
     function formatNumber(n) {
-        return Number.isFinite(n)
-            ? n.toLocaleString(undefined, { maximumFractionDigits: 10 })
-            : String(n);
+        if (!Number.isFinite(n)) return 'Error';
+        // Use up to 10 decimal places, no unnecessary trailing zeros
+        return parseFloat(n.toPrecision(12)).toString();
     }
 
     /**
-     * Updates the result display with a value and its expression label,
-     * applies the appropriate colour-state class, and triggers the bump
-     * animation so the user gets clear visual feedback on every operation.
-     * @param {number} value
-     * @param {string} expressionText
+     * Renders currentInput on the display and applies the correct colour-state
+     * modifier class. Also triggers the brief bump animation.
      */
-    function showResult(value, expressionText) {
-        result.textContent = formatNumber(value);
-        expression.textContent = expressionText;
+    function updateDisplay() {
+        display.textContent = currentInput;
 
-        // Apply colour-state modifier classes
-        result.classList.remove('calculator__result--positive', 'calculator__result--negative');
-        if (value > 0) {
-            result.classList.add('calculator__result--positive');
-        } else if (value < 0) {
-            result.classList.add('calculator__result--negative');
+        // Apply colour-state modifier classes based on the numeric value
+        display.classList.remove(
+            'calculator__display--positive',
+            'calculator__display--negative'
+        );
+        const numericValue = parseFloat(currentInput);
+        if (!isNaN(numericValue) && numericValue > 0) {
+            display.classList.add('calculator__display--positive');
+        } else if (!isNaN(numericValue) && numericValue < 0) {
+            display.classList.add('calculator__display--negative');
         }
 
-        // Trigger bump animation by cycling the class
-        result.classList.remove('calculator__result--bump');
-        void result.offsetWidth; // force reflow so animation re-triggers
-        result.classList.add('calculator__result--bump');
-    }
-
-    // --- Public operations -------------------------------------------------
-
-    /**
-     * Adds the two input values and displays the result.
-     * Shows an error and aborts if either input is non-numeric.
-     */
-    function add() {
-        const values = validateInputs();
-        if (values === null) return;
-
-        const { a, b } = values;
-        showResult(a + b, `${formatNumber(a)} + ${formatNumber(b)} =`);
+        // Trigger bump animation by forcing a reflow between class removals
+        display.classList.remove('calculator__display--bump');
+        void display.offsetWidth;
+        display.classList.add('calculator__display--bump');
     }
 
     /**
-     * Subtracts the second input value from the first and displays the result.
-     * Shows an error and aborts if either input is non-numeric.
+     * Highlights the active operator button and removes highlight from others.
+     * @param {string|null} operator
      */
-    function subtract() {
-        const values = validateInputs();
-        if (values === null) return;
-
-        const { a, b } = values;
-        showResult(a - b, `${formatNumber(a)} − ${formatNumber(b)} =`);
-    }
-
-    // --- Event listeners ---------------------------------------------------
-
-    addBtn.addEventListener('click', add);
-    subtractBtn.addEventListener('click', subtract);
-
-    // Clear the error state as soon as the user begins correcting a field,
-    // so the UI feels responsive and non-intrusive.
-    [inputA, inputB].forEach(function (input) {
-        input.addEventListener('input', function () {
-            if (input.classList.contains('calculator__input--error')) {
-                input.classList.remove('calculator__input--error');
-                input.removeAttribute('aria-invalid');
-
-                // If both fields are now valid, also clear the banner message.
-                if (!inputA.classList.contains('calculator__input--error') &&
-                    !inputB.classList.contains('calculator__input--error')) {
-                    errorMsg.textContent = '';
-                }
-            }
+    function highlightOperator(operator) {
+        keypad.querySelectorAll('.calculator__key--operator').forEach(function (btn) {
+            btn.classList.toggle('is-active', btn.dataset.value === operator);
         });
+    }
+
+    /**
+     * Evaluates the pending operation with the current and previous inputs.
+     * Returns the numeric result, or null when there is nothing to evaluate.
+     * @returns {number|null}
+     */
+    function evaluate() {
+        if (pendingOperator === null || previousInput === '') return null;
+
+        const a = parseFloat(previousInput);
+        const b = parseFloat(currentInput);
+
+        switch (pendingOperator) {
+            case '+': return a + b;
+            case '−': return a - b;
+            case '×': return a * b;
+            case '÷': return b !== 0 ? a / b : NaN;
+            default:  return null;
+        }
+    }
+
+    // --- Action handlers ---------------------------------------------------
+
+    /** Appends a digit character to the current input. */
+    function handleDigit(digit) {
+        // After evaluation, a new digit press starts a fresh entry
+        if (justEvaluated) {
+            currentInput = digit === '0' ? '0' : digit;
+            justEvaluated = false;
+        } else if (currentInput === '0' && digit !== '.') {
+            currentInput = digit;
+        } else {
+            // Guard against excessively long strings
+            if (currentInput.length >= 15) return;
+            currentInput += digit;
+        }
+        updateDisplay();
+    }
+
+    /** Appends a decimal point if one is not already present. */
+    function handleDecimal() {
+        if (justEvaluated) {
+            currentInput = '0.';
+            justEvaluated = false;
+            updateDisplay();
+            return;
+        }
+        if (!currentInput.includes('.')) {
+            currentInput += '.';
+            updateDisplay();
+        }
+    }
+
+    /**
+     * Stores the current input as the first operand, records the operator,
+     * and prepares for the second operand to be entered.
+     * @param {string} operator
+     */
+    function handleOperator(operator) {
+        justEvaluated = false;
+
+        // If an operator is already pending and the user has entered a second
+        // operand, chain the operations before storing the new operator.
+        if (pendingOperator !== null && previousInput !== '') {
+            const chained = evaluate();
+            if (chained !== null) {
+                const resultStr = formatNumber(chained);
+                expression.textContent = `${resultStr} ${operator}`;
+                previousInput = resultStr;
+                currentInput = resultStr;
+                pendingOperator = operator;
+                highlightOperator(operator);
+                updateDisplay();
+                return;
+            }
+        }
+
+        previousInput = currentInput;
+        pendingOperator = operator;
+        expression.textContent = `${currentInput} ${operator}`;
+        highlightOperator(operator);
+
+        // The next digit entry should replace rather than append
+        justEvaluated = true;
+    }
+
+    /** Evaluates the pending operation and shows the result. */
+    function handleEquals() {
+        if (pendingOperator === null || previousInput === '') return;
+
+        const result = evaluate();
+        if (result === null) return;
+
+        const resultStr = Number.isFinite(result) ? formatNumber(result) : 'Error';
+
+        expression.textContent =
+            `${previousInput} ${pendingOperator} ${currentInput} =`;
+        currentInput = resultStr;
+        previousInput = '';
+        pendingOperator = null;
+        justEvaluated = true;
+
+        highlightOperator(null);
+        updateDisplay();
+    }
+
+    /** Resets all state to the initial zero value. */
+    function handleReset() {
+        currentInput = '0';
+        previousInput = '';
+        pendingOperator = null;
+        justEvaluated = false;
+        expression.textContent = '';
+        highlightOperator(null);
+        updateDisplay();
+    }
+
+    // --- Event delegation --------------------------------------------------
+
+    keypad.addEventListener('click', function (event) {
+        const key = event.target.closest('.calculator__key');
+        if (!key) return;
+
+        const action = key.dataset.action;
+        const value  = key.dataset.value;
+
+        switch (action) {
+            case 'digit':    handleDigit(value);    break;
+            case 'decimal':  handleDecimal();        break;
+            case 'operator': handleOperator(value);  break;
+            case 'equals':   handleEquals();         break;
+            case 'reset':    handleReset();          break;
+        }
     });
+
+    // Seed the display at start-up
+    updateDisplay();
 }
 
 // Contact form handling

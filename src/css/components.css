@@ -556,317 +556,241 @@
 .calculator__widget {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-8);
-  max-width: 28rem;
+  align-items: stretch;
+  gap: 0;
+  max-width: 22rem;
   margin: 0 auto;
-  background-color: var(--color-white);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-8) var(--space-8) var(--space-10);
+  background-color: var(--color-gray-900);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2xl);
+  overflow: hidden;
 
   /* Top accent stripe — same primary-colour motif as cards and the about section */
   border-top: 3px solid var(--color-primary-light);
 }
 
-/* Input row */
-.calculator__inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  width: 100%;
+/* -------------------------------------------------------
+   Display area
+   ------------------------------------------------------- */
 
-  /* Centre the operator glyph between the two columns via a CSS-only approach:
-     a pseudo-element on the container that visually bridges the gap. */
-  position: relative;
-}
-
-/* Decorative operator marker between the two input columns */
-.calculator__inputs::after {
-  content: "±";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-gray-400);
-  background-color: var(--color-gray-100);
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius-full);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 1;
-  line-height: 1;
-
-  /* Sit on top of the gap without affecting the grid children */
-  margin-top: calc(var(--font-size-sm) + var(--space-2));
-}
-
-.calculator__field {
+.calculator__display-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  text-align: left;
+  align-items: flex-end;
+  gap: var(--space-1);
+  padding: var(--space-6) var(--space-5) var(--space-4);
+  background-color: var(--color-gray-900);
+  min-height: 7rem;
 }
 
-.calculator__label {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-gray-600);
-  letter-spacing: 0.02em;
-}
-
-/* Inputs use the primary-light border and warm tint to match the counter
-   display and card accent language rather than the plain gray-200 default. */
-.calculator__input {
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  font-variant-numeric: tabular-nums;
-  text-align: center;
-  color: var(--color-gray-900);
-  background-color: rgb(249 115 22 / 4%);
-  border: 2px solid var(--color-primary-light);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition:
-    border-color var(--transition-fast),
-    background-color var(--transition-fast),
-    box-shadow var(--transition-fast);
-
-  /* Remove browser-default spin buttons for a cleaner look */
-  appearance: textfield;
-}
-
-.calculator__input::-webkit-inner-spin-button,
-.calculator__input::-webkit-outer-spin-button {
-  appearance: none;
-  margin: 0;
-}
-
-.calculator__input:hover {
-  border-color: var(--color-primary);
-  background-color: rgb(249 115 22 / 6%);
-}
-
-.calculator__input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  background-color: var(--color-white);
-  box-shadow: 0 0 0 3px rgb(249 115 22 / 15%);
-}
-
-/* Input error state — applied by JS when a field contains a non-numeric value */
-.calculator__input--error {
-  border-color: var(--color-error);
-  background-color: rgb(239 68 68 / 5%);
-  box-shadow: 0 0 0 3px rgb(239 68 68 / 15%);
-}
-
-.calculator__input--error:focus {
-  border-color: var(--color-error);
-  box-shadow: 0 0 0 3px rgb(239 68 68 / 20%);
-}
-
-/* Inline error message — hidden when empty */
-.calculator__error {
-  width: 100%;
-  min-height: 0;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-error);
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  transition: opacity var(--transition-fast);
-}
-
-.calculator__error:empty {
-  display: none;
-}
-
-/* Operation buttons */
-.calculator__controls {
-  display: flex;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.calculator__btn {
-  min-width: 9rem;
-  padding: var(--space-3) var(--space-8);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-md);
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-.calculator__btn:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-1px);
-}
-
-.calculator__btn:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-sm);
-}
-
-/* Result area — labelled divider above the output */
-.calculator__result-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  width: 100%;
-
-  /* Top hairline with centred "Result" label — separates controls from output */
-  position: relative;
-  padding-top: var(--space-8);
-}
-
-/* Hairline rule */
-.calculator__result-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: var(--color-gray-200);
-}
-
-/* "Result" label centred over the hairline */
-.calculator__result-wrapper::after {
-  content: "Result";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-gray-500);
-  background-color: var(--color-white);
-  padding: 0 var(--space-3);
-  white-space: nowrap;
-}
-
-.calculator__result {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 5rem;
-  font-size: var(--font-size-5xl);
-  font-weight: var(--font-weight-extrabold);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-  color: var(--color-primary);
-  background-color: var(--color-white);
-  border: 3px solid var(--color-primary-light);
-  border-radius: var(--radius-3xl);
-  box-shadow: var(--shadow-lg), var(--shadow-inner);
-  transition:
-    color var(--transition-base),
-    border-color var(--transition-base),
-    box-shadow var(--transition-base);
-  user-select: none;
-  padding: var(--space-4) var(--space-6);
-}
-
-/* Colour states: applied by JS based on sign of result */
-.calculator__result--positive {
-  color: var(--color-success);
-  border-color: var(--color-success);
-  box-shadow:
-    0 0 0 4px rgb(16 185 129 / 15%),
-    var(--shadow-lg),
-    var(--shadow-inner);
-}
-
-.calculator__result--negative {
-  color: var(--color-error);
-  border-color: var(--color-error);
-  box-shadow:
-    0 0 0 4px rgb(239 68 68 / 15%),
-    var(--shadow-lg),
-    var(--shadow-inner);
-}
-
-/* Brief scale pulse when the result updates */
-@keyframes calc-bump {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.04); }
-  100% { transform: scale(1); }
-}
-
-.calculator__result--bump {
-  animation: calc-bump var(--transition-base) ease-out;
-}
-
-/* Expression label — hidden until JS populates it to avoid empty-space gap */
+/* Expression line (e.g. "12 + 7 =") — shown above the main value */
 .calculator__expression {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-gray-500);
+  color: var(--color-gray-400);
   font-variant-numeric: tabular-nums;
   margin: 0;
   letter-spacing: 0.02em;
-  min-height: 0;
-  transition: opacity var(--transition-fast);
+  min-height: 1.25rem;
+  line-height: var(--line-height-normal);
+  text-align: right;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .calculator__expression:empty {
   visibility: hidden;
 }
 
+/* Main value display — the <output> that shows the current number */
+.calculator__display {
+  display: block;
+  width: 100%;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-align: right;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+  transition: color var(--transition-base);
+}
+
+/* Colour states: updated by JS based on the value sign */
+.calculator__display--positive {
+  color: var(--color-success);
+}
+
+.calculator__display--negative {
+  color: var(--color-error);
+}
+
+/* Brief scale pulse when the display value updates */
+@keyframes calc-bump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.calculator__display--bump {
+  animation: calc-bump var(--transition-base) ease-out;
+}
+
+/* -------------------------------------------------------
+   Keypad grid
+   ------------------------------------------------------- */
+
+/*
+ * Layout (4 columns, 5 rows):
+ *
+ *  [ AC ]  [ × ]  [ ÷ ]  |  ← 3 cols for row 1 (reset + 2 operators)
+ *  [  7 ]  [ 8 ]  [ 9 ]  [ + ]
+ *  [  4 ]  [ 5 ]  [ 6 ]  [ − ]
+ *  [  1 ]  [ 2 ]  [ 3 ]  [ = ] ← = spans 2 rows
+ *  [  0 (span 2) ]  [ . ]
+ *
+ * The "AC" key spans all 3 leftmost columns so that = can span 2 rows on
+ * the right-hand column without leaving an empty cell.
+ */
+
+.calculator__keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--color-gray-700); /* gap colour between keys */
+}
+
+/* -------------------------------------------------------
+   Individual key base styles
+   ------------------------------------------------------- */
+
+.calculator__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-2);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  user-select: none;
+  min-height: 4rem;
+
+  /* Keep a consistent focus ring across key types */
+  outline-offset: -2px;
+}
+
+.calculator__key:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: -2px;
+}
+
+.calculator__key:active {
+  transform: scale(0.94);
+}
+
+/* Digit keys — neutral dark shade */
+.calculator__key--digit {
+  background-color: var(--color-gray-800);
+  color: var(--color-white);
+}
+
+.calculator__key--digit:hover {
+  background-color: var(--color-gray-700);
+}
+
+/* Operator keys (+, −, ×, ÷) — primary accent colour */
+.calculator__key--operator {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.calculator__key--operator:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Active/selected operator — shows which operation is pending */
+.calculator__key--operator.is-active {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+/* Equals key — stands out with accent colour, spans 2 rows */
+.calculator__key--equals {
+  grid-row: span 2;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+}
+
+.calculator__key--equals:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Reset key (AC) — danger colour, spans 3 columns */
+.calculator__key--reset {
+  grid-column: span 3;
+  background-color: var(--color-gray-600);
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.calculator__key--reset:hover {
+  background-color: var(--color-error);
+}
+
+/* Zero key — spans 2 columns */
+.calculator__key--zero {
+  grid-column: span 2;
+  justify-content: flex-start;
+  padding-left: var(--space-6);
+}
+
 /* -------------------------------------------------------
    Calculator responsive overrides
    ------------------------------------------------------- */
 
-/* Small phones: stack inputs, shrink result font & buttons */
+/* Small phones: tighten padding so the widget fits comfortably */
 @media (width <= 479px) {
   .calculator__widget {
-    padding: var(--space-6) var(--space-5) var(--space-8);
+    max-width: 100%;
+    border-radius: var(--radius-xl);
   }
 
-  .calculator__inputs {
-    grid-template-columns: 1fr;
-  }
-
-  /* Hide the operator marker when stacked — it would sit mid-column oddly */
-  .calculator__inputs::after {
-    display: none;
-  }
-
-  .calculator__result {
+  .calculator__display {
     font-size: var(--font-size-4xl);
   }
 
-  .calculator__btn {
-    min-width: 7.5rem;
-    font-size: var(--font-size-base);
+  .calculator__key {
+    font-size: var(--font-size-lg);
+    min-height: 3.5rem;
+    padding: var(--space-4) var(--space-2);
+  }
+
+  .calculator__key--equals {
+    font-size: var(--font-size-xl);
   }
 }
 
 /* Medium viewports: widen the widget slightly to use available space */
 @media (480px <= width <= 767px) {
   .calculator__widget {
-    max-width: 32rem;
-    padding: var(--space-8) var(--space-10) var(--space-10);
+    max-width: 26rem;
   }
 }
 
