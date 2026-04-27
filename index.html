@@ -249,61 +249,162 @@
         <section id="calculator" class="calculator">
             <div class="container">
                 <h2 class="section__title">Calculator</h2>
-                <div class="calculator__widget" role="region" aria-label="Interactive calculator">
-                    <div class="calculator__inputs">
-                        <div class="calculator__field">
-                            <label for="calc-a" class="calculator__label">First number</label>
-                            <input
-                                type="number"
-                                id="calc-a"
-                                class="calculator__input"
-                                value="0"
-                                aria-label="First number"
-                                aria-describedby="calc-error"
-                            >
-                        </div>
-                        <div class="calculator__field">
-                            <label for="calc-b" class="calculator__label">Second number</label>
-                            <input
-                                type="number"
-                                id="calc-b"
-                                class="calculator__input"
-                                value="0"
-                                aria-label="Second number"
-                                aria-describedby="calc-error"
-                            >
-                        </div>
-                    </div>
-                    <p
-                        id="calc-error"
-                        class="calculator__error"
-                        role="alert"
-                        aria-live="assertive"
-                        aria-atomic="true"
-                    ></p>
-                    <div class="calculator__controls">
-                        <button
-                            type="button"
-                            id="calc-add"
-                            class="btn btn--primary calculator__btn"
-                            aria-label="Add the two numbers"
-                        >+ Add</button>
-                        <button
-                            type="button"
-                            id="calc-subtract"
-                            class="btn btn--danger calculator__btn"
-                            aria-label="Subtract the second number from the first"
-                        >− Subtract</button>
-                    </div>
-                    <div class="calculator__result-wrapper" aria-live="polite" aria-atomic="true">
+                <div
+                    class="calculator__widget"
+                    role="region"
+                    aria-label="Interactive calculator"
+                >
+                    <!-- Display -->
+                    <div class="calculator__display-wrapper">
+                        <p
+                            id="calc-expression"
+                            class="calculator__expression"
+                            aria-hidden="true"
+                        ></p>
                         <output
-                            id="calc-result"
-                            class="calculator__result"
-                            aria-label="Calculator result"
-                        >—</output>
-                        <p id="calc-expression" class="calculator__expression" aria-hidden="true"></p>
+                            id="calc-display"
+                            class="calculator__display"
+                            aria-live="polite"
+                            aria-atomic="true"
+                            aria-label="Calculator display"
+                        >0</output>
                     </div>
-                </div>
+
+                    <!-- Keypad -->
+                    <div class="calculator__keypad" role="group" aria-label="Calculator keys">
+
+                        <!-- Row 1: Reset, operator × and ÷ -->
+                        <button
+                            type="button"
+                            id="calc-reset"
+                            class="calculator__key calculator__key--reset"
+                            aria-label="Reset calculator"
+                            data-action="reset"
+                        >AC</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--operator"
+                            aria-label="Multiply"
+                            data-action="operator"
+                            data-value="×"
+                        >×</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--operator"
+                            aria-label="Divide"
+                            data-action="operator"
+                            data-value="÷"
+                        >÷</button>
+
+                        <!-- Row 2: 7 8 9 and operator + -->
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="7"
+                            data-action="digit"
+                            data-value="7"
+                        >7</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="8"
+                            data-action="digit"
+                            data-value="8"
+                        >8</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="9"
+                            data-action="digit"
+                            data-value="9"
+                        >9</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--operator"
+                            aria-label="Add"
+                            data-action="operator"
+                            data-value="+"
+                        >+</button>
+
+                        <!-- Row 3: 4 5 6 and operator − -->
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="4"
+                            data-action="digit"
+                            data-value="4"
+                        >4</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="5"
+                            data-action="digit"
+                            data-value="5"
+                        >5</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="6"
+                            data-action="digit"
+                            data-value="6"
+                        >6</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--operator"
+                            aria-label="Subtract"
+                            data-action="operator"
+                            data-value="−"
+                        >−</button>
+
+                        <!-- Row 4: 1 2 3 and equals (spans 2 rows) -->
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="1"
+                            data-action="digit"
+                            data-value="1"
+                        >1</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="2"
+                            data-action="digit"
+                            data-value="2"
+                        >2</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="3"
+                            data-action="digit"
+                            data-value="3"
+                        >3</button>
+                        <button
+                            type="button"
+                            id="calc-equals"
+                            class="calculator__key calculator__key--equals"
+                            aria-label="Equals"
+                            data-action="equals"
+                            data-value="="
+                        >=</button>
+
+                        <!-- Row 5: 0 (spans 2 cols), decimal point -->
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit calculator__key--zero"
+                            aria-label="0"
+                            data-action="digit"
+                            data-value="0"
+                        >0</button>
+                        <button
+                            type="button"
+                            class="calculator__key calculator__key--digit"
+                            aria-label="Decimal point"
+                            data-action="decimal"
+                            data-value="."
+                        >.</button>
+
+                    </div><!-- /.calculator__keypad -->
+                </div><!-- /.calculator__widget -->
             </div>
         </section>
 
