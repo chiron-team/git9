@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Currículum vitae de Alejandro Vega Montoya, desarrollador de software con experiencia en desarrollo web y aplicaciones móviles.">
+    <meta name="author" content="Alejandro Vega Montoya">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="src/css/main.css" as="style">
+    <link rel="preload" href="src/css/cv.css" as="style">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/cv.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <title>CV — Alejandro Vega Montoya</title>
+</head>
+<body class="cv-page">
+
+    <!-- =====================================================
+         CV HEADER — photo placeholder, name & contact info
+         ===================================================== -->
+    <header class="cv-header" role="banner">
+        <div class="cv-header__inner container">
+
+            <!-- Photo placeholder -->
+            <div class="cv-header__photo" aria-label="Foto de perfil de Alejandro Vega Montoya">
+                <span class="cv-header__photo-initials" aria-hidden="true">AV</span>
+            </div>
+
+            <!-- Name, title & contacts -->
+            <div class="cv-header__info">
+                <h1 class="cv-header__name">Alejandro Vega Montoya</h1>
+                <p class="cv-header__title">Desarrollador de Software Full Stack</p>
+
+                <address class="cv-header__contacts">
+                    <ul class="cv-header__contact-list">
+                        <li class="cv-header__contact-item">
+                            <span class="cv-header__contact-icon" aria-hidden="true">📍</span>
+                            <span>Barcelona, España</span>
+                        </li>
+                        <li class="cv-header__contact-item">
+                            <span class="cv-header__contact-icon" aria-hidden="true">📧</span>
+                            <span>alejandro.vega@ejemplo.com</span>
+                        </li>
+                        <li class="cv-header__contact-item">
+                            <span class="cv-header__contact-icon" aria-hidden="true">📞</span>
+                            <span>+34 612 345 678</span>
+                        </li>
+                        <li class="cv-header__contact-item">
+                            <span class="cv-header__contact-icon" aria-hidden="true">🔗</span>
+                            <span>linkedin.com/in/alejandro-vega</span>
+                        </li>
+                        <li class="cv-header__contact-item">
+                            <span class="cv-header__contact-icon" aria-hidden="true">💻</span>
+                            <span>github.com/alejandrovega</span>
+                        </li>
+                    </ul>
+                </address>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================
+         MAIN CONTENT — two-column layout on desktop
+         ===================================================== -->
+    <main class="cv-main container" id="main-content">
+
+        <!-- ==================== LEFT COLUMN ==================== -->
+        <div class="cv-column cv-column--left">
+
+            <!-- PERFIL PERSONAL -->
+            <section class="cv-section" aria-labelledby="profile-heading">
+                <h2 class="cv-section__title" id="profile-heading">
+                    <span class="cv-section__title-icon" aria-hidden="true">👤</span>
+                    Perfil Personal
+                </h2>
+                <p class="cv-section__body">
+                    Desarrollador full stack con más de 6 años de experiencia diseñando y
+                    construyendo aplicaciones web y móviles escalables. Apasionado por la
+                    arquitectura de software limpia, las buenas prácticas de accesibilidad y la
+                    entrega continua de valor al usuario. Colaborador activo en equipos ágiles,
+                    con fuerte orientación a resultados y habilidad para comunicar conceptos
+                    técnicos a audiencias no técnicas.
+                </p>
+            </section>
+
+            <!-- EXPERIENCIA LABORAL -->
+            <section class="cv-section" aria-labelledby="experience-heading">
+                <h2 class="cv-section__title" id="experience-heading">
+                    <span class="cv-section__title-icon" aria-hidden="true">💼</span>
+                    Experiencia Laboral
+                </h2>
+
+                <!-- Trabajo 1 -->
+                <article class="cv-entry" aria-label="Experiencia en Nexora Digital">
+                    <header class="cv-entry__header">
+                        <div class="cv-entry__meta">
+                            <h3 class="cv-entry__role">Desarrollador Full Stack Senior</h3>
+                            <p class="cv-entry__org">Nexora Digital, S.L.</p>
+                        </div>
+                        <div class="cv-entry__period">
+                            <time datetime="2021-03">Mar 2021</time>
+                            <span aria-hidden="true">–</span>
+                            <span>Presente</span>
+                        </div>
+                    </header>
+                    <ul class="cv-entry__list">
+                        <li>Lideré el rediseño de la plataforma principal de e-commerce, reduciendo el tiempo de carga en un <strong>42&nbsp;%</strong> mediante lazy loading y code splitting.</li>
+                        <li>Diseñé e implementé una API REST con Node.js y PostgreSQL que procesa más de 150&nbsp;000 peticiones diarias con una disponibilidad del 99,97&nbsp;%.</li>
+                        <li>Coordiné un equipo de 4 desarrolladores junior, estableciendo estándares de revisión de código y flujos de CI/CD con GitHub Actions.</li>
+                        <li>Migré el frontend de una SPA Angular a React, mejorando la puntuación de Core Web Vitals en un 35&nbsp;%.</li>
+                    </ul>
+                </article>
+
+                <!-- Trabajo 2 -->
+                <article class="cv-entry" aria-label="Experiencia en Inversiones BrightPath">
+                    <header class="cv-entry__header">
+                        <div class="cv-entry__meta">
+                            <h3 class="cv-entry__role">Desarrollador Web Full Stack</h3>
+                            <p class="cv-entry__org">BrightPath Inversiones, S.A.</p>
+                        </div>
+                        <div class="cv-entry__period">
+                            <time datetime="2018-09">Sep 2018</time>
+                            <span aria-hidden="true">–</span>
+                            <time datetime="2021-02">Feb 2021</time>
+                        </div>
+                    </header>
+                    <ul class="cv-entry__list">
+                        <li>Desarrollé un portal de gestión de cartera de inversiones con React y Django REST Framework, utilizado por más de 3&nbsp;000 clientes activos.</li>
+                        <li>Implementé autenticación multifactor (MFA) y cifrado en tránsito/reposo, superando satisfactoriamente auditorías de seguridad externas.</li>
+                        <li>Automaticé pipelines de datos financieros con Python y Apache Airflow, eliminando 12&nbsp;horas semanales de trabajo manual.</li>
+                    </ul>
+                </article>
+
+                <!-- Trabajo 3 -->
+                <article class="cv-entry" aria-label="Experiencia en Freelance">
+                    <header class="cv-entry__header">
+                        <div class="cv-entry__meta">
+                            <h3 class="cv-entry__role">Desarrollador Freelance</h3>
+                            <p class="cv-entry__org">Autónomo</p>
+                        </div>
+                        <div class="cv-entry__period">
+                            <time datetime="2016-06">Jun 2016</time>
+                            <span aria-hidden="true">–</span>
+                            <time datetime="2018-08">Ago 2018</time>
+                        </div>
+                    </header>
+                    <ul class="cv-entry__list">
+                        <li>Diseñé y entregué más de 20 sitios web y tiendas online para pymes locales usando WordPress, WooCommerce y HTML/CSS/JS a medida.</li>
+                        <li>Desarrollé una aplicación móvil híbrida con Ionic para una clínica dental, facilitando la gestión de citas para 800 pacientes mensuales.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- EDUCACIÓN -->
+            <section class="cv-section" aria-labelledby="education-heading">
+                <h2 class="cv-section__title" id="education-heading">
+                    <span class="cv-section__title-icon" aria-hidden="true">🎓</span>
+                    Educación
+                </h2>
+
+                <!-- Grado -->
+                <article class="cv-entry" aria-label="Grado en Ingeniería Informática">
+                    <header class="cv-entry__header">
+                        <div class="cv-entry__meta">
+                            <h3 class="cv-entry__role">Grado en Ingeniería Informática</h3>
+                            <p class="cv-entry__org">Universidad Autónoma de Barcelona</p>
+                        </div>
+                        <div class="cv-entry__period">
+                            <time datetime="2012-09">2012</time>
+                            <span aria-hidden="true">–</span>
+                            <time datetime="2016-06">2016</time>
+                        </div>
+                    </header>
+                    <ul class="cv-entry__list">
+                        <li>Especialización en Ingeniería del Software y Sistemas Distribuidos.</li>
+                        <li>Proyecto final: <em>«Plataforma colaborativa de edición de documentos en tiempo real»</em> — calificación: Matrícula de Honor.</li>
+                    </ul>
+                </article>
+
+                <!-- Máster -->
+                <article class="cv-entry" aria-label="Máster en Desarrollo Web Avanzado">
+                    <header class="cv-entry__header">
+                        <div class="cv-entry__meta">
+                            <h3 class="cv-entry__role">Máster en Desarrollo Web Avanzado</h3>
+                            <p class="cv-entry__org">Escola Superior de Disseny i Enginyeria (ESDI)</p>
+                        </div>
+                        <div class="cv-entry__period">
+                            <time datetime="2017-10">2017</time>
+                            <span aria-hidden="true">–</span>
+                            <time datetime="2018-06">2018</time>
+                        </div>
+                    </header>
+                    <ul class="cv-entry__list">
+                        <li>Contenidos: arquitectura de microservicios, DevOps, UX avanzado y rendimiento web.</li>
+                        <li>Beca de excelencia académica por expediente académico superior al 9,0.</li>
+                    </ul>
+                </article>
+            </section>
+
+        </div>
+        <!-- ==================== END LEFT COLUMN ==================== -->
+
+        <!-- ==================== RIGHT COLUMN ==================== -->
+        <aside class="cv-column cv-column--right" aria-label="Información adicional">
+
+            <!-- HABILIDADES TÉCNICAS -->
+            <section class="cv-section" aria-labelledby="skills-heading">
+                <h2 class="cv-section__title" id="skills-heading">
+                    <span class="cv-section__title-icon" aria-hidden="true">⚙️</span>
+                    Habilidades Técnicas
+                </h2>
+
+                <div class="cv-skills">
+                    <div class="cv-skills__group">
+                        <h3 class="cv-skills__group-title">Frontend</h3>
+                        <ul class="cv-skills__list">
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">React / Next.js</span>
+                                <div class="cv-skill__bar" role="img" aria-label="React / Next.js: nivel avanzado (90 %)">
+                                    <div class="cv-skill__fill" style="width: 90%"></div>
+                                </div>
+                            </li>
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">HTML5 &amp; CSS3</span>
+                                <div class="cv-skill__bar" role="img" aria-label="HTML5 y CSS3: nivel experto (95 %)">
+                                    <div class="cv-skill__fill" style="width: 95%"></div>
+                                </div>
+                            </li>
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">TypeScript</span>
+                                <div class="cv-skill__bar" role="img" aria-label="TypeScript: nivel avanzado (85 %)">
+                                    <div class="cv-skill__fill" style="width: 85%"></div>
+                                </div>
+                            </li>
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">Angular</span>
+                                <div class="cv-skill__bar" role="img" aria-label="Angular: nivel intermedio (70 %)">
+                                    <div class="cv-skill__fill" style="width: 70%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-skills__group">
+                        <h3 class="cv-skills__group-title">Backend</h3>
+                        <ul class="cv-skills__list">
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">Node.js / Express</span>
+                                <div class="cv-skill__bar" role="img" aria-label="Node.js / Express: nivel avanzado (88 %)">
+                                    <div class="cv-skill__fill" style="width: 88%"></div>
+                                </div>
+                            </li>
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">Python / Django</span>
+                                <div class="cv-skill__bar" role="img" aria-label="Python / Django: nivel avanzado (82 %)">
+                                    <div class="cv-skill__fill" style="width: 82%"></div>
+                                </div>
+                            </li>
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">PostgreSQL</span>
+                                <div class="cv-skill__bar" role="img" aria-label="PostgreSQL: nivel avanzado (80 %)">
+                                    <div class="cv-skill__fill" style="width: 80%"></div>
+                                </div>
+                            </li>
+                            <li class="cv-skill">
+                                <span class="cv-skill__name">Docker / Kubernetes</span>
+                                <div class="cv-skill__bar" role="img" aria-label="Docker y Kubernetes: nivel intermedio (65 %)">
+                                    <div class="cv-skill__fill" style="width: 65%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-skills__group">
+                        <h3 class="cv-skills__group-title">Herramientas &amp; Métodos</h3>
+                        <ul class="cv-skills__tags">
+                            <li class="cv-tag">Git / GitHub</li>
+                            <li class="cv-tag">CI/CD</li>
+                            <li class="cv-tag">Scrum / Kanban</li>
+                            <li class="cv-tag">Jest / Testing Library</li>
+                            <li class="cv-tag">Figma</li>
+                            <li class="cv-tag">AWS</li>
+                            <li class="cv-tag">REST APIs</li>
+                            <li class="cv-tag">GraphQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IDIOMAS -->
+            <section class="cv-section" aria-labelledby="languages-heading">
+                <h2 class="cv-section__title" id="languages-heading">
+                    <span class="cv-section__title-icon" aria-hidden="true">🌐</span>
+                    Idiomas
+                </h2>
+                <ul class="cv-languages">
+                    <li class="cv-language">
+                        <span class="cv-language__name">Español</span>
+                        <span class="cv-language__level cv-language__level--native">Nativo</span>
+                    </li>
+                    <li class="cv-language">
+                        <span class="cv-language__name">Inglés</span>
+                        <span class="cv-language__level cv-language__level--advanced">Avanzado (C1)</span>
+                    </li>
+                    <li class="cv-language">
+                        <span class="cv-language__name">Catalán</span>
+                        <span class="cv-language__level cv-language__level--advanced">Avanzado (C1)</span>
+                    </li>
+                    <li class="cv-language">
+                        <span class="cv-language__name">Francés</span>
+                        <span class="cv-language__level cv-language__level--intermediate">Intermedio (B1)</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- CERTIFICACIONES -->
+            <section class="cv-section" aria-labelledby="certifications-heading">
+                <h2 class="cv-section__title" id="certifications-heading">
+                    <span class="cv-section__title-icon" aria-hidden="true">🏅</span>
+                    Certificaciones
+                </h2>
+                <ul class="cv-certs">
+                    <li class="cv-cert">
+                        <strong class="cv-cert__name">AWS Certified Developer – Associate</strong>
+                        <span class="cv-cert__date">Amazon Web Services, 2023</span>
+                    </li>
+                    <li class="cv-cert">
+                        <strong class="cv-cert__name">Professional Scrum Master I (PSM I)</strong>
+                        <span class="cv-cert__date">Scrum.org, 2022</span>
+                    </li>
+                    <li class="cv-cert">
+                        <strong class="cv-cert__name">Google UX Design Certificate</strong>
+                        <span class="cv-cert__date">Google / Coursera, 2021</span>
+                    </li>
+                </ul>
+            </section>
+
+        </aside>
+        <!-- ==================== END RIGHT COLUMN ==================== -->
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer class="cv-footer" role="contentinfo">
+        <div class="container">
+            <p class="cv-footer__text">
+                Currículum generado con datos ficticios con fines demostrativos.
+                &copy; 2024 Alejandro Vega Montoya.
+            </p>
+            <nav class="cv-footer__nav" aria-label="Navegación del sitio">
+                <a href="index.html" class="cv-footer__link">← Volver al inicio</a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+</html>
